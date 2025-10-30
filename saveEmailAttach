@@ -1,1 +1,43 @@
 
+function saveAttachmentsToDriveInBatches() {
+  const BATCH_SIZE = 50; // Adjust if you want fewer/more emails per run
+  const folderId = 'YOUR_FOLDER_ID'; // Replace with your Drive folder ID
+  const folder = DriveApp.getFolderById(folderId);
+  const props = PropertiesService.getScriptProperties();
+  let start = parseInt(props.getProperty('LAST_PROCESSED') || '0', 10);
+
+  const threads = GmailApp.search('has:attachment');
+  const end = Math.min(start + BATCH_SIZE, threads.length);
+
+  Logger.log(`Processing emails ${start + 1} to ${end} of ${threads.length}...`);
+
+  for (let i = start; i < end; i++) {
+    const messages = threads[i].getMessages();
+    for (const message of messages) {
+      const attachments = message.getAttachments();
+      for (const attachment of attachments) {
+        const fileName = attachment.getName();
+
+        // Skip if file already exists
+        const existingFiles = folder.getFilesByName(fileName);
+        if (existingFiles.hasNext()) {
+          Logger.log('Skipping existing file: ' + fileName);
+          continue;
+        }
+
+        folder.createFile(attachment);
+        Logger.log('Saved: ' + fileName);
+      }
+    }
+  }
+
+  // Save progress for next run
+  props.setProperty('LAST_PROCESSED', end.toString());
+
+  if (end >= threads.length) {
+    Logger.log('✅ All emails processed!');
+    props.deleteProperty('LAST_PROCESSED');
+  } else {
+    Logger.log(`⏸️ Paused. Next run will continue from ${end + 1}.`);
+  }
+}
