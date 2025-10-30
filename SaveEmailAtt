@@ -1,0 +1,13 @@
+function saveGmailAttachmentsToDrive() {
+  const threads = GmailApp.search('has:attachment newer_than:1y');
+  const folder = DriveApp.createFolder('Email Attachments Backup');
+
+  for (let thread of threads) {
+    for (let message of thread.getMessages()) {
+      for (let attachment of message.getAttachments()) {
+        folder.createFile(attachment.copyBlob());
+      }
+    }
+  }
+  Logger.log('All attachments saved to Google Drive folder: ' + folder.getName());
+}
