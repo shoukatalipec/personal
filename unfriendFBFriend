@@ -1,0 +1,176 @@
+// === Facebook Bulk Unfriend Helper (run on your Friends page) ===
+// Usage: Open Facebook -> Go to "Friends" list (https://www.facebook.com/me/friends).
+// Paste this into DevTools Console and run.
+// Adjust DELAY_BETWEEN and SCROLL_TIMEOUT if needed.
+
+(async () => {
+  const DELAY_BETWEEN = 2500;    // ms between each unfriend cycle (increase if you hit rate limits)
+  const CLICK_WAIT = 800;        // ms to wait after opening dropdown
+  const SCROLL_TIMEOUT = 1000;   // ms between auto-scroll steps
+  const MAX_SCROLL_STEPS = 200;  // how many times to scroll to load friends (increase if necessary)
+
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const txt = s => s && s.trim && s.trim().toLowerCase();
+
+  // Auto-scroll to load many friends (stop early if bottom reached)
+  async function autoScroll() {
+    console.log('Auto-scrolling to load friends...');
+    let lastHeight = document.documentElement.scrollHeight;
+    for (let i = 0; i < MAX_SCROLL_STEPS; i++) {
+      window.scrollTo(0, document.documentElement.scrollHeight);
+      await delay(SCROLL_TIMEOUT);
+      let newHeight = document.documentElement.scrollHeight;
+      if (newHeight === lastHeight) {
+        // try a small upward scroll to ensure dynamic load
+        window.scrollTo(0, newHeight - 200);
+        await delay(SCROLL_TIMEOUT);
+        newHeight = document.documentElement.scrollHeight;
+        if (newHeight === lastHeight) {
+          console.log('Reached end of page (or no more content loading).');
+          break;
+        }
+      }
+      lastHeight = newHeight;
+    }
+    // small pause after scrolling
+    await delay(800);
+  }
+
+  // Find all "Friends" buttons in the friends list items.
+  // Facebook uses different markup; try several heuristics.
+  function collectFriendButtons() {
+    const candidates = [];
+
+    // 1) Buttons or spans with visible text "Friends"
+    const textButtons = Array.from(document.querySelectorAll('button, div[role="button"], a'))
+      .filter(el => {
+        try { return txt(el.innerText) === 'friends'; } catch (e) { return false; }
+      });
+    candidates.push(...textButtons);
+
+    // 2) Elements with aria-label containing 'Friends' (some locales)
+    const ariaButtons = Array.from(document.querySelectorAll('[aria-label]'))
+      .filter(el => {
+        try { return el.getAttribute('aria-label') && txt(el.getAttribute('aria-label')).includes('friends'); } catch (e) { return false; }
+      });
+    candidates.push(...ariaButtons);
+
+    // 3) Buttons inside friend card rows (look for row containers)
+    const rows = Array.from(document.querySelectorAll('[data-testid="friend_list_item"], [role="article"], [role="listitem"]'));
+    for (const r of rows) {
+      const btn = Array.from(r.querySelectorAll('button,div[role="button"],a'))
+        .find(el => {
+          try {
+            const t = txt(el.innerText) || txt(el.getAttribute('aria-label'));
+            return t && t.includes('friend');
+          } catch (e) { return false; }
+        });
+      if (btn) candidates.push(btn);
+    }
+
+    // Deduplicate and return visible ones
+    return Array.from(new Set(candidates)).filter(el => el && el.offsetParent !== null);
+  }
+
+  // Try to click Unfriend in the opened menu
+  function findAndClickUnfriend() {
+    // menu items are often buttons or spans
+    const menuItems = Array.from(document.querySelectorAll('div[role="menu"] button, div[role="menuitem"], div[role="menu"] a, [role="menuitem"]'));
+    const unfriendItem = menuItems.find(mi => {
+      try {
+        const text = txt(mi.innerText) || txt(mi.textContent) || txt(mi.getAttribute('aria-label'));
+        return text && (text.includes('unfriend') || text.includes('remove friend') || text.includes('remove friendship'));
+      } catch (e) { return false; }
+    });
+    if (unfriendItem) {
+      unfriendItem.click();
+      return true;
+    }
+
+    // fallback: search for any clickable element that mentions "Unfriend"
+    const all = Array.from(document.querySelectorAll('button, a, div'));
+    const fallback = all.find(el => {
+      try {
+        const text = txt(el.innerText) || txt(el.textContent) || txt(el.getAttribute('aria-label'));
+        return text && (text.includes('unfriend') || text.includes('remove friend'));
+      } catch (e) { return false; }
+    });
+    if (fallback) {
+      fallback.click();
+      return true;
+    }
+    return false;
+  }
+
+  // Some UI shows a confirm dialog after clicking Unfriend; try to confirm it
+  function confirmDialogIfPresent() {
+    // Look for common confirm buttons
+    const confirmButtons = Array.from(document.querySelectorAll('div[role="dialog"] button, dialog button, [aria-label], button'))
+      .filter(b => {
+        try {
+          const t = txt(b.innerText) || txt(b.getAttribute('aria-label'));
+          return t && (t.includes('confirm') || t.includes('unfriend') || t.includes('remove') || t.includes('ok'));
+        } catch (e) { return false; }
+      });
+    if (confirmButtons.length) {
+      confirmButtons[0].click();
+      return true;
+    }
+    return false;
+  }
+
+  // Main flow
+  try {
+    await autoScroll();
+    let buttons = collectFriendButtons();
+    console.log(`Collected ${buttons.length} candidate "Friends" buttons.`);
+
+    if (buttons.length === 0) {
+      console.warn('No buttons found automatically. You may need to scroll more or run this script while viewing a different friends list view.');
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+      const btn = buttons[i];
+      try {
+        // Ensure button is still in DOM and visible
+        if (!document.body.contains(btn) || btn.offsetParent === null) {
+          console.log(`Skipping button ${i+1}: not visible or removed.`);
+          continue;
+        }
+
+        console.log(`(${i+1}/${buttons.length}) Opening menu for friend...`);
+        btn.scrollIntoView({behavior: 'auto', block: 'center'});
+        btn.click();
+        await delay(CLICK_WAIT);
+
+        const gotUnfriend = findAndClickUnfriend();
+        if (!gotUnfriend) {
+          console.warn('Could not find "Unfriend" menu item for this friend. Closing menu and continuing.');
+          // attempt to close menu (press Escape)
+          document.dispatchEvent(new KeyboardEvent('keydown', {'key':'Escape'}));
+          await delay(400);
+          continue;
+        }
+
+        await delay(600);
+        const confirmed = confirmDialogIfPresent();
+        if (confirmed) {
+          console.log('Confirmed unfriend.');
+        } else {
+          // maybe the unfriend was immediate; still wait a bit
+          console.log('Unfriend action fired (no confirm dialog detected).');
+        }
+
+        // wait between operations
+        await delay(DELAY_BETWEEN);
+      } catch (innerErr) {
+        console.error('Error while processing one friend:', innerErr);
+        await delay(DELAY_BETWEEN);
+      }
+    }
+
+    console.log('Finished processing collected friend buttons. Note: if you have many friends, load more by scrolling and re-run to continue.');
+  } catch (err) {
+    console.error('Script failed:', err);
+  }
+})();
