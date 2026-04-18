@@ -1,34 +1,34 @@
-// === YouTube Bulk Unsubscribe Script ===
-// Run this in browser console at https://www.youtube.com/feed/channels
+/**
+ * YouTube Mass Unsubscribe Script
+ * * This script finds all 'Subscribed' buttons, clicks them, 
+ * and then confirms the 'Unsubscribe' popup.
+ */
 
-(async () => {
-  const delay = ms => new Promise(res => setTimeout(res, ms));
-
-  // Get all "Subscribed" buttons
-  let buttons = Array.from(document.querySelectorAll('ytd-subscribe-button-renderer yt-button-shape button'))
-    .filter(btn => btn.textContent.trim().toLowerCase().includes('subscribed'));
-
-  console.log(`Found ${buttons.length} subscribed channels.`);
+const unsubscribeAll = async () => {
+  // Find all subscription buttons on the page
+  const buttons = document.querySelectorAll('button[aria-label^="Unsubscribe from"]');
+  
+  console.log(`Found ${buttons.length} channels to unsubscribe from.`);
 
   for (let i = 0; i < buttons.length; i++) {
-    const btn = buttons[i];
-    console.log(`Unsubscribing from channel ${i + 1}/${buttons.length}...`);
+    // Click the initial 'Subscribed' button
+    buttons[i].click();
 
-    btn.click(); // Open the unsubscribe confirmation dialog
-    await delay(1000);
+    // Wait a moment for the confirmation dialog to appear
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Confirm unsubscribe
-    const confirmBtn = document.querySelector('tp-yt-paper-button#confirm-button');
-    if (confirmBtn) {
-      confirmBtn.click();
-      console.log('Unsubscribed successfully.');
-    } else {
-      console.warn('Confirm button not found, skipping...');
+    // Find the 'Unsubscribe' button in the popup and click it
+    const confirmButton = document.querySelector('yt-button-renderer#confirm-button button');
+    if (confirmButton) {
+      confirmButton.click();
+      console.log(`Unsubscribed from channel #${i + 1}`);
     }
 
-    // Wait between each unsubscribe (adjust delay as needed)
-    await delay(2000);
+    // Wait a bit before the next one to avoid being flagged as a bot
+    await new Promise(resolve => setTimeout(resolve, 1000));
   }
 
-  console.log('✅ Finished unsubscribing from all visible channels.');
-})();
+  console.log("Process complete! If there are more, scroll down and run again.");
+};
+
+unsubscribeAll();
