@@ -1,76 +1,65 @@
 /**
- * Facebook Mass Unfriend Script (Consolidated Version 2026)
- * Built based on provided HTML: More Button -> Unfriend Item -> Confirm Dialog
+ * Advanced Script to Unfriend everyone with Confirmation Handling
  */
+const unfriendAllWithConfirm = async () => {
+    // ADJUST THESE DELAYS IF YOUR INTERNET IS SLOW
+    const WAIT_FOR_MENU = 1000;    // Time to wait for the Unfriend menu to pop up
+    const WAIT_FOR_MODAL = 1200;   // Time to wait for the Confirm box to pop up
+    const NEXT_FRIEND_DELAY = 2500; // Time to wait before moving to the next person
 
-const startUnfriendCleanUp = async () => {
-  console.log("%c Starting automated clean-up... ", "background: #222; color: #bada55; font-size: 15px;");
-
-  while (true) {
-    // 1. Find the "More" (three dots) buttons in the list you provided
-    const moreButtons = Array.from(document.querySelectorAll('div[aria-label="More"][role="button"]'));
-
-    if (moreButtons.length === 0) {
-      console.log("No more buttons found. Scrolling to find more friends...");
-      window.scrollBy(0, 1000);
-      await new Promise(r => setTimeout(r, 2500));
-      
-      // Stop if no new buttons appear after scrolling
-      if (document.querySelectorAll('div[aria-label="More"][role="button"]').length === 0) {
-        console.log("Reached the end of the friends list.");
-        break;
-      }
-      continue;
-    }
-
-    for (const btn of moreButtons) {
-      // Bring the friend card into view
-      btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      
-      // Open the "More" menu
-      btn.click(); 
-      await new Promise(r => setTimeout(r, 1200));
-
-      // 2. Find "Unfriend" in the menu role="menuitem"
-      const menuItems = Array.from(document.querySelectorAll('div[role="menuitem"]'));
-      const unfriendAction = menuItems.find(item => item.innerText.includes("Unfriend"));
-
-      if (unfriendAction) {
-        unfriendAction.click();
-        console.log("Unfriend clicked. Waiting for confirmation dialog...");
+    while (true) {
+        // Find all "Three Dots" buttons
+        let moreButtons = document.querySelectorAll('div[aria-label^="More options for"]');
         
-        // Wait for the aria-modal="true" dialog to appear
-        await new Promise(r => setTimeout(r, 1500));
-
-        // 3. Click the "Confirm" button specifically (aria-label="Confirm")
-        const confirmBtn = document.querySelector('div[role="dialog"] div[aria-label="Confirm"][role="button"]');
-        
-        if (confirmBtn) {
-          confirmBtn.click();
-          console.log("✅ Successfully Unfriended.");
-        } else {
-          // Fallback: If aria-label fails, find by text "Confirm"
-          const fallbackBtn = Array.from(document.querySelectorAll('div[role="dialog"] div[role="button"]'))
-            .find(b => b.innerText === "Confirm");
-          if (fallbackBtn) {
-            fallbackBtn.click();
-            console.log("✅ Unfriended via text fallback.");
-          }
+        if (moreButtons.length === 0) {
+            console.log("No visible friends. Scrolling...");
+            window.scrollTo(0, document.body.scrollHeight);
+            await new Promise(r => setTimeout(r, 3000));
+            
+            moreButtons = document.querySelectorAll('div[aria-label^="More options for"]');
+            if (moreButtons.length === 0) {
+                console.log("Finished! No more friends found.");
+                break;
+            }
         }
-      } else {
-        // If unfriend wasn't found, close the menu by clicking the dots again
-        btn.click();
-      }
 
-      // 4. Randomized Safety Wait (6 to 10 seconds)
-      // This mimics human speed to avoid your account being flagged.
-      const waitTime = Math.floor(Math.random() * 4000) + 6000;
-      console.log(`Waiting ${waitTime / 1000}s for safety...`);
-      await new Promise(r => setTimeout(r, waitTime));
+        for (let btn of moreButtons) {
+            try {
+                // 1. Click the "Three Dots" menu
+                btn.scrollIntoView({ block: "center" }); // Ensure button is visible
+                btn.click();
+                await new Promise(r => setTimeout(r, WAIT_FOR_MENU));
+
+                // 2. Click "Unfriend" in the menu
+                const menuItems = document.querySelectorAll('div[role="menuitem"]');
+                let unfriendBtn = Array.from(menuItems).find(el => el.innerText.includes("Unfriend"));
+
+                if (unfriendBtn) {
+                    unfriendBtn.click();
+                    console.log("Clicked Unfriend... waiting for confirmation box.");
+                    
+                    // 3. Wait for the "Confirm" pop-up to appear
+                    await new Promise(r => setTimeout(r, WAIT_FOR_MODAL));
+                    
+                    // Target the specific Confirm button from your HTML
+                    const confirmBtn = document.querySelector('div[aria-label="Confirm"]');
+                    
+                    if (confirmBtn) {
+                        confirmBtn.click();
+                        console.log("Confirmed Unfriend.");
+                    } else {
+                        console.log("Confirm button not found, moving on.");
+                    }
+                }
+
+                // 4. Wait before doing the next person
+                await new Promise(r => setTimeout(r, NEXT_FRIEND_DELAY));
+                
+            } catch (err) {
+                console.error("Error processing a friend, skipping...", err);
+            }
+        }
     }
-  }
-
-  console.log("Process complete!");
 };
 
-startUnfriendCleanUp();
+unfriendAllWithConfirm();
