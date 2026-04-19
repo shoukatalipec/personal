@@ -1,0 +1,36 @@
+/**
+ * Script to cancel all sent friend requests and auto-scroll
+ */
+const cancelRequests = async () => {
+    const DELAY = 1000; // 1 second delay between actions
+    
+    while (true) {
+        // Find all buttons that have the label "Cancel request"
+        let buttons = document.querySelectorAll('div[aria-label="Cancel request"]');
+        
+        if (buttons.length === 0) {
+            console.log("No more buttons found. Scrolling down...");
+            window.scrollTo(0, document.body.scrollHeight);
+            
+            // Wait a moment for new items to load
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Re-check if scrolling loaded new buttons
+            buttons = document.querySelectorAll('div[aria-label="Cancel request"]');
+            if (buttons.length === 0) {
+                console.log("Finished! No more requests found.");
+                break;
+            }
+        }
+
+        for (let button of buttons) {
+            button.click();
+            console.log("Cancelled a request.");
+            
+            // Wait to avoid being flagged as a bot
+            await new Promise(resolve => setTimeout(resolve, DELAY));
+        }
+    }
+};
+
+cancelRequests();
