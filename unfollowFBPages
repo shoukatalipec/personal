@@ -1,0 +1,52 @@
+/**
+ * Fast Unfollow Script
+ * Targets: "More options" -> "Unfollow"
+ */
+const hyperUnfollow = async () => {
+    // Ultra-fast delays (roughly 0.2s total per action)
+    const MENU_DELAY = 150; 
+    const NEXT_DELAY = 100; 
+
+    while (true) {
+        // 1. Find the "Three Dots" buttons
+        let dots = document.querySelectorAll('div[aria-label^="More options for"]');
+
+        if (dots.length === 0) {
+            console.log("No more buttons found. Scrolling...");
+            window.scrollTo(0, document.body.scrollHeight);
+            await new Promise(r => setTimeout(r, 1000)); 
+            dots = document.querySelectorAll('div[aria-label^="More options for"]');
+            if (dots.length === 0) break;
+        }
+
+        for (let btn of dots) {
+            try {
+                // Open the dropdown menu
+                btn.click();
+                await new Promise(r => setTimeout(r, MENU_DELAY));
+
+                // 2. Find the "Unfollow" menu item from your HTML
+                const menuItems = Array.from(document.querySelectorAll('div[role="menuitem"]'));
+                const unfollowBtn = menuItems.find(el => el.innerText.includes("Unfollow"));
+
+                if (unfollowBtn) {
+                    unfollowBtn.click();
+                    console.log("⚡ Unfollowed");
+                } else {
+                    // Close menu if Unfollow isn't there (already unfollowed or error)
+                    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+                }
+
+                // 3. Move to the next one almost immediately
+                await new Promise(r => setTimeout(r, NEXT_DELAY));
+                
+            } catch (e) {
+                // If anything blocks the UI, hit Escape and skip
+                window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+            }
+        }
+    }
+    console.log("Process complete.");
+};
+
+hyperUnfollow();
