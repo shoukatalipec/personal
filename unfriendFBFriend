@@ -1,65 +1,55 @@
 /**
- * Advanced Script to Unfriend everyone with Confirmation Handling
+ * WARNING: High-speed script. 
+ * Use at your own risk of account restriction.
  */
-const unfriendAllWithConfirm = async () => {
-    // ADJUST THESE DELAYS IF YOUR INTERNET IS SLOW
-    const WAIT_FOR_MENU = 1000;    // Time to wait for the Unfriend menu to pop up
-    const WAIT_FOR_MODAL = 1200;   // Time to wait for the Confirm box to pop up
-    const NEXT_FRIEND_DELAY = 2500; // Time to wait before moving to the next person
+const hyperUnfriend = async () => {
+    // Delays set to roughly 100ms - 300ms
+    const MENU_DELAY = 150; 
+    const MODAL_DELAY = 250;
+    const NEXT_DELAY = 100; 
 
     while (true) {
-        // Find all "Three Dots" buttons
-        let moreButtons = document.querySelectorAll('div[aria-label^="More options for"]');
-        
-        if (moreButtons.length === 0) {
-            console.log("No visible friends. Scrolling...");
+        let dots = document.querySelectorAll('div[aria-label^="More options for"]');
+
+        if (dots.length === 0) {
             window.scrollTo(0, document.body.scrollHeight);
-            await new Promise(r => setTimeout(r, 3000));
-            
-            moreButtons = document.querySelectorAll('div[aria-label^="More options for"]');
-            if (moreButtons.length === 0) {
-                console.log("Finished! No more friends found.");
-                break;
-            }
+            await new Promise(r => setTimeout(r, 1000)); // Wait for scroll load
+            dots = document.querySelectorAll('div[aria-label^="More options for"]');
+            if (dots.length === 0) break;
         }
 
-        for (let btn of moreButtons) {
+        for (let btn of dots) {
             try {
-                // 1. Click the "Three Dots" menu
-                btn.scrollIntoView({ block: "center" }); // Ensure button is visible
+                // Step 1: Open Menu
                 btn.click();
-                await new Promise(r => setTimeout(r, WAIT_FOR_MENU));
+                
+                // Step 2: Immediate check for Unfriend button
+                await new Promise(r => setTimeout(r, MENU_DELAY));
+                const unfriend = Array.from(document.querySelectorAll('div[role="menuitem"]'))
+                                     .find(el => el.innerText.includes("Unfriend"));
 
-                // 2. Click "Unfriend" in the menu
-                const menuItems = document.querySelectorAll('div[role="menuitem"]');
-                let unfriendBtn = Array.from(menuItems).find(el => el.innerText.includes("Unfriend"));
-
-                if (unfriendBtn) {
-                    unfriendBtn.click();
-                    console.log("Clicked Unfriend... waiting for confirmation box.");
+                if (unfriend) {
+                    unfriend.click();
                     
-                    // 3. Wait for the "Confirm" pop-up to appear
-                    await new Promise(r => setTimeout(r, WAIT_FOR_MODAL));
+                    // Step 3: Immediate check for Confirm
+                    await new Promise(r => setTimeout(r, MODAL_DELAY));
+                    const confirm = document.querySelector('div[aria-label="Confirm"]');
                     
-                    // Target the specific Confirm button from your HTML
-                    const confirmBtn = document.querySelector('div[aria-label="Confirm"]');
-                    
-                    if (confirmBtn) {
-                        confirmBtn.click();
-                        console.log("Confirmed Unfriend.");
-                    } else {
-                        console.log("Confirm button not found, moving on.");
+                    if (confirm) {
+                        confirm.click();
+                        console.log("⚡ Fast Unfriend Success");
                     }
                 }
 
-                // 4. Wait before doing the next person
-                await new Promise(r => setTimeout(r, NEXT_FRIEND_DELAY));
+                // Small breather to let the DOM update
+                await new Promise(r => setTimeout(r, NEXT_DELAY));
                 
-            } catch (err) {
-                console.error("Error processing a friend, skipping...", err);
+            } catch (e) {
+                // If it fails, hit Escape to clear the screen and keep going
+                window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
             }
         }
     }
 };
 
-unfriendAllWithConfirm();
+hyperUnfriend();
