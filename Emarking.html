@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cascade Popup Launcher | SSC & HSSC | Compact Row UI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            margin: 0;
+        }
+
+        .card {
+            max-width: 1280px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1a3a4f 100%);
+            padding: 1.2rem 2rem;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0 0 0.2rem 0;
+            font-weight: 700;
+            font-size: 1.7rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.85rem;
+        }
+
+        .content {
+            padding: 1.8rem 2rem 2rem 2rem;
+        }
+
+        /* ----- MAIN ONE-LINE ROW (buttons + numeric inputs) ----- */
+        .master-control-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 1rem;
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        /* button group inline */
+        .action-buttons-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            align-items: center;
+        }
+        button{
+            width: 120px;
+        }
+
+        /* each numeric field compact */
+        .compact-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 150px;
+        }
+        .compact-field label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #1e4a76;
+        }
+        .compact-field input {
+            padding: 0.55rem 0.85rem;
+            font-size: 0.95rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 1rem;
+            background: white;
+            transition: 0.2s;
+            font-weight: 500;
+            width: 100%;
+        }
+        .compact-field input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        button {
+            border: none;
+            font-weight: 700;
+            padding: 0.6rem 1.4rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        button.primary {
+            background: #1e40af;
+            color: white;
+            box-shadow: 0 2px 6px rgba(30, 64, 175, 0.25);
+        }
+
+        button.primary:hover {
+            background: #1e3a8a;
+            transform: translateY(-1px);
+        }
+
+        button.secondary {
+            background: #0f5b3a;
+            color: white;
+            box-shadow: 0 2px 6px rgba(15, 91, 58, 0.25);
+        }
+
+        button.secondary:hover {
+            background: #0a452b;
+            transform: translateY(-1px);
+        }
+
+        button.danger {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2);
+        }
+
+        button.danger:hover {
+            background: #b91c1c;
+        }
+
+        /* preview info block stays below, but clean */
+        .info-badge {
+            background: #eef2ff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            color: #1e3a8a;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 0 0 1.5rem 0;
+            font-weight: 500;
+            justify-content: flex-start;
+            align-items: baseline;
+        }
+
+        .info-badge span {
+            font-family: monospace;
+            font-weight: 800;
+            background: white;
+            padding: 0.2rem 0.7rem;
+            border-radius: 24px;
+            font-size: 0.85rem;
+        }
+
+        .status-panel {
+            background: #f1f5f9;
+            border-radius: 1.25rem;
+            padding: 1rem 1.4rem;
+            margin-top: 0.5rem;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .log-area {
+            max-height: 260px;
+            overflow-y: auto;
+            font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.75rem;
+            background: #0f172a;
+            color: #cbd5e6;
+            padding: 0.9rem 1rem;
+            border-radius: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .log-line {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #1e293b;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .log-line.success {
+            color: #4ade80;
+        }
+
+        .log-line.error {
+            color: #f87171;
+        }
+
+        .log-line.warning {
+            color: #fbbf24;
+        }
+
+        .badge {
+            background: #334155;
+            padding: 0.25rem 0.75rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .footer-note {
+            font-size: 0.7rem;
+            text-align: center;
+            color: #475569;
+            margin-top: 1.4rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* responsive: on small screens wrap gracefully */
+        @media (max-width: 780px) {
+            .master-control-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .action-buttons-group {
+                justify-content: center;
+            }
+            .compact-field {
+                width: 100%;
+            }
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <h1>📚 Cascade Popup Launcher</h1>
+        <p>SSC & HSSC FBISE</p>
+    </div>
+    <div class="content">
+        <!-- 🚀 Everything in a single row: buttons + start number + page count -->
+        <div class="master-control-row">
+
+            <!-- Start number compact field -->
+            <div class="compact-field">
+                <label>🔢 START NUMBER (x)</label>
+                <input type="number" id="startNum" placeholder="e.g., 4648242" value="">
+            </div>
+
+            <!-- Page count compact field -->
+            <div class="compact-field">
+                <label>📄 NUMBER OF PAGES (count)</label>
+                <input type="number" id="pageCount" value="40" step="1" min="1">
+            </div>
+
+            <!-- Right side: three action buttons -->
+            <!-- <div class="action-buttons-group"> -->
+                <button id="openSscBtn" class="primary">🚀 SSC</button>
+                <button id="openHsscBtn" class="secondary">📘 HSSC</button>
+                <button id="stopBtn" class="danger">⏹️ STOP</button>
+            <!-- </div> -->
+        </div>
+
+        <!-- Updated preview badge: shows start, pages, end -->
+        <div class="info-badge">
+            <span>📊 Start: <span id="startPreview">—</span></span>
+            <span>📄 Pages: <span id="pageCountPreview">40</span></span>
+            <span>🏁 End: <span id="endPreview">—</span></span>
+        </div>
+
+        <!-- Status panel (process status shifted to right) -->
+        <div class="status-panel">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
+                <span id="activeStateBadge" class="badge">⚫ IDLE</span>
+                <span><strong>📟 Process Status</strong></span>
+            </div>
+            <div id="progressInfo" style="margin: 8px 0 4px; font-size:0.85rem">
+                ✅ Ready — Enter Start number & Page count. Choose a site.
+            </div>
+            <div class="log-area" id="logContainer">
+                <div class="log-line success">📐 Cascade mode: Window 1 at (50,50), then each +10px right & +10px down</div>
+                <div class="log-line">🪟 Real popup windows (not tabs) for both SSC and HSSC</div>
+                <div class="log-line">🔢 Opens exactly 'Page Count' consecutive numbers from Start (each once)</div>
+                <div class="log-line">⚡ Fixed delay: 1–2 seconds random between windows</div>
+                <div class="log-line">🔓 IMPORTANT: Allow popups for this site when prompted</div>
+            </div>
+        </div>
+        <div class="footer-note">
+            ⚠️ <strong>Popup blocker:</strong> Click "Allow" if browser blocks windows.<br>
+            📐 <strong>Cascade offset:</strong> First window at (50,50), each next moves 10px right and 10px down.<br>
+            🏛️ <strong>SSC URL:</strong> https://emarking.fbise.edu.pk/batchinformation/unmarked/edit/{x}<br>
+            📘 <strong>HSSC URL:</strong> https://emarkhssc.fbise.edu.pk/batchinformation/unmarked/edit/{x}<br>
+            ⚙️ Internal settings: delay 1‑2s, max 50 windows, size 1100×800.
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // DOM Elements
+        const startInput = document.getElementById('startNum');
+        const pageCountInput = document.getElementById('pageCount');
+        const openSscBtn = document.getElementById('openSscBtn');
+        const openHsscBtn = document.getElementById('openHsscBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        
+        const startPreviewSpan = document.getElementById('startPreview');
+        const pageCountPreviewSpan = document.getElementById('pageCountPreview');
+        const endPreviewSpan = document.getElementById('endPreview');
+        const progressInfoDiv = document.getElementById('progressInfo');
+        const activeStateBadge = document.getElementById('activeStateBadge');
+        const logContainer = document.getElementById('logContainer');
+
+        // Fixed internal settings
+        const MIN_DELAY_SEC = 1.0;
+        const MAX_DELAY_SEC = 2.0;
+        const MAX_WINDOWS_LIMIT = 50;
+        const WINDOW_WIDTH = 1100;
+        const WINDOW_HEIGHT = 800;
+        
+        const URL_TEMPLATES = {
+            ssc: 'https://emarking.fbise.edu.pk/batchinformation/unmarked/edit/{x}',
+            hssc: 'https://emarkhssc.fbise.edu.pk/batchinformation/unmarked/edit/{x}'
+        };
+        
+        let currentBaseUrl = URL_TEMPLATES.ssc;
+
+        // Process state
+        let isRunning = false;
+        let timeoutIds = [];
+        let currentQueuePosition = 0;
+        let pendingUrls = [];
+        let openedUrls = new Set();
+        let currentBatchId = null;
+        
+        let currentOffsetX = 50;
+        let currentOffsetY = 50;
+        const STEP_X = 10;
+        const STEP_Y = 10;
+
+        function getNextCascadePosition() {
+            let screenWidth = window.screen.availWidth || window.screen.width || 1366;
+            let screenHeight = window.screen.availHeight || window.screen.height || 768;
+            
+            let left = currentOffsetX;
+            let top = currentOffsetY;
+            
+            let maxLeft = Math.max(0, screenWidth - WINDOW_WIDTH - 20);
+            let maxTop = Math.max(0, screenHeight - WINDOW_HEIGHT - 40);
+            left = Math.min(maxLeft, Math.max(0, left));
+            top = Math.min(maxTop, Math.max(0, top));
+            
+            currentOffsetX += STEP_X;
+            currentOffsetY += STEP_Y;
+            if (currentOffsetX > screenWidth - 100) currentOffsetX = 50;
+            if (currentOffsetY > screenHeight - 100) currentOffsetY = 50;
+            
+            return { left, top };
+        }
+        
+        function resetCascadeOffset() {
+            currentOffsetX = 50;
+            currentOffsetY = 50;
+        }
+        
+        function getWindowFeaturesForNext() {
+            const { left, top } = getNextCascadePosition();
+            let features = `width=${WINDOW_WIDTH},height=${WINDOW_HEIGHT},left=${left},top=${top},menubar=yes,toolbar=yes,location=yes,status=yes,resizable=yes,scrollbars=yes,popup=yes`;
+            return { features, left, top };
+        }
+        
+        function addLog(message, type = 'info') {
+            const logLine = document.createElement('div');
+            logLine.className = `log-line ${type}`;
+            const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
+            logLine.textContent = `[${timestamp}] ${message}`;
+            logContainer.appendChild(logLine);
+            logLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            while (logContainer.children.length > 280) {
+                logContainer.removeChild(logContainer.firstChild);
+            }
+        }
+        
+        function clearAllTimeouts() {
+            for (const id of timeoutIds) clearTimeout(id);
+            timeoutIds = [];
+        }
+        
+        function stopAllOperations() {
+            if (!isRunning && timeoutIds.length === 0) {
+                addLog(`No active process to stop.`, 'warning');
+                return;
+            }
+            clearAllTimeouts();
+            isRunning = false;
+            currentBatchId = null;
+            updateStatusBadge(false);
+            progressInfoDiv.innerText = `⛔ Stopped by user. Remaining windows cancelled.`;
+            addLog(`🛑 Process stopped. ${pendingUrls.length - currentQueuePosition} pending window(s) cancelled.`, 'error');
+            currentQueuePosition = 0;
+            pendingUrls = [];
+            openedUrls.clear();
+            resetCascadeOffset();
+        }
+        
+        function updateStatusBadge(active) {
+            if (active) {
+                activeStateBadge.innerHTML = '🟢 RUNNING';
+                activeStateBadge.style.background = '#15803d';
+            } else {
+                activeStateBadge.innerHTML = '⚫ IDLE';
+                activeStateBadge.style.background = '#334155';
+            }
+        }
+        
+        function generateUrlList(startVal, pageCountVal) {
+            const urls = [];
+            if (isNaN(startVal) || startVal === undefined || startInput.value.trim() === '') return urls;
+            if (pageCountVal < 1) pageCountVal = 1;
+            const totalDesired = Math.min(pageCountVal, MAX_WINDOWS_LIMIT, 300);
+            for (let i = 0; i < totalDesired; i++) {
+                const currentNum = startVal + i;
+                const url = currentBaseUrl.replace('{x}', currentNum);
+                urls.push(url);
+            }
+            return urls;
+        }
+        
+        function openPopupWithCascade(url) {
+            const { features, left, top } = getWindowFeaturesForNext();
+            const uniqueName = `popup_cascade_${Date.now()}_${Math.random().toString(36).substring(2, 12)}`;
+            try {
+                const popup = window.open(url, uniqueName, features);
+                if (!popup || popup.closed) {
+                    const fallbackFeatures = `width=${WINDOW_WIDTH},height=${WINDOW_HEIGHT},left=${left},top=${top},popup=yes,resizable=yes,scrollbars=yes,location=yes`;
+                    const fallback = window.open(url, `popup_fallback_${Date.now()}`, fallbackFeatures);
+                    if (!fallback || fallback.closed) throw new Error('Popup blocked. Please allow popups.');
+                    try { fallback.focus(); } catch(e) {}
+                    return fallback;
+                }
+                try { popup.focus(); } catch(e) {}
+                return popup;
+            } catch (err) {
+                throw new Error(`Failed: ${err.message}`);
+            }
+        }
+        
+        function openNextWindow(onComplete) {
+            if (!isRunning) {
+                addLog(`Process interrupted — stopping.`, 'warning');
+                if (onComplete) onComplete(false);
+                return;
+            }
+            if (currentQueuePosition >= pendingUrls.length) {
+                const totalOpened = pendingUrls.length;
+                addLog(`✅ COMPLETE: All ${totalOpened} page(s) opened with cascade offset.`, 'success');
+                isRunning = false;
+                currentBatchId = null;
+                updateStatusBadge(false);
+                progressInfoDiv.innerText = `✅ Success! ${totalOpened} popup window(s) launched.`;
+                openedUrls.clear();
+                resetCascadeOffset();
+                if (onComplete) onComplete(true);
+                return;
+            }
+            const targetUrl = pendingUrls[currentQueuePosition];
+            const currentNum = currentQueuePosition + 1;
+            const total = pendingUrls.length;
+            if (openedUrls.has(targetUrl)) {
+                addLog(`⚠️ DUPLICATE (should not happen): ${targetUrl}`, 'warning');
+                currentQueuePosition++;
+                openNextWindow(onComplete);
+                return;
+            }
+            const randomDelay = MIN_DELAY_SEC + Math.random() * (MAX_DELAY_SEC - MIN_DELAY_SEC);
+            const delayMs = randomDelay * 1000;
+            progressInfoDiv.innerText = `⏳ Waiting ${randomDelay.toFixed(2)} sec → opening ${currentNum}/${total}...`;
+            const timeoutId = setTimeout(() => {
+                if (!isRunning) {
+                    addLog(`Skipped (stopped): ${targetUrl}`, 'warning');
+                    return;
+                }
+                try {
+                    openPopupWithCascade(targetUrl);
+                    openedUrls.add(targetUrl);
+                    addLog(`✅ [${currentNum}/${total}] Opened at cascade offset (${currentOffsetX - STEP_X},${currentOffsetY - STEP_Y}): ${targetUrl}`, 'success');
+                } catch (err) {
+                    addLog(`❌ [${currentNum}/${total}] ${err.message} — ${targetUrl}`, 'error');
+                }
+                currentQueuePosition++;
+                openNextWindow(onComplete);
+            }, delayMs);
+            timeoutIds.push(timeoutId);
+        }
+        
+        function startBatch(siteType) {
+            if (isRunning) {
+                addLog(`❗ Batch already running. Click STOP first.`, 'error');
+                return;
+            }
+            if (siteType === 'ssc') currentBaseUrl = URL_TEMPLATES.ssc;
+            else currentBaseUrl = URL_TEMPLATES.hssc;
+            
+            let startNum = parseInt(startInput.value, 10);
+            let pageCount = parseInt(pageCountInput.value, 10);
+            
+            if (isNaN(startNum) || startInput.value.trim() === '') {
+                addLog(`❌ Please enter a valid Start number.`, 'error');
+                return;
+            }
+            if (isNaN(pageCount) || pageCount < 1) pageCount = 40;
+            
+            const effectivePages = Math.min(pageCount, MAX_WINDOWS_LIMIT, 300);
+            if (effectivePages <= 0) {
+                addLog(`❌ No pages to open. Check page count.`, 'error');
+                return;
+            }
+            
+            const urls = generateUrlList(startNum, effectivePages);
+            if (urls.length === 0) {
+                addLog(`❌ Failed to generate URLs.`, 'error');
+                return;
+            }
+            
+            clearAllTimeouts();
+            isRunning = true;
+            currentBatchId = Date.now();
+            currentQueuePosition = 0;
+            pendingUrls = [...urls];
+            openedUrls.clear();
+            timeoutIds = [];
+            resetCascadeOffset();
+            updateStatusBadge(true);
+            
+            const lastNum = startNum + urls.length - 1;
+            const siteName = siteType === 'ssc' ? 'SSC FBISE' : 'HSSC FBISE';
+            addLog(`🚀 START [${siteName}]: ${urls.length} unique popup(s) [${startNum} → ${lastNum}]`, 'success');
+            addLog(`⏱️ Delay: ${MIN_DELAY_SEC}–${MAX_DELAY_SEC} sec (random)`, 'info');
+            addLog(`📐 Cascade: first window at (50,50), then +10px right, +10px down each`, 'info');
+            progressInfoDiv.innerText = `📐 Launching ${urls.length} popups (${siteName}) with cascade offset...`;
+            
+            openNextWindow((completed) => {
+                if (completed) isRunning = false;
+                else isRunning = false;
+                currentBatchId = null;
+                updateStatusBadge(false);
+                clearAllTimeouts();
+                pendingUrls = [];
+                currentQueuePosition = 0;
+                openedUrls.clear();
+                resetCascadeOffset();
+            });
+        }
+        
+        function refreshPreview() {
+            let start = parseInt(startInput.value, 10);
+            let pageCnt = parseInt(pageCountInput.value, 10);
+            let hasStart = !isNaN(start) && startInput.value.trim() !== '';
+            let validPageCnt = !isNaN(pageCnt) && pageCnt > 0;
+            
+            if (hasStart && validPageCnt) {
+                const actualPages = Math.min(pageCnt, MAX_WINDOWS_LIMIT, 300);
+                const endNum = start + actualPages - 1;
+                startPreviewSpan.innerText = start;
+                pageCountPreviewSpan.innerText = actualPages;
+                endPreviewSpan.innerText = endNum;
+            } else {
+                startPreviewSpan.innerText = '—';
+                pageCountPreviewSpan.innerText = pageCnt > 0 ? pageCnt : '0';
+                endPreviewSpan.innerText = '—';
+            }
+        }
+        
+        function setupEventListeners() {
+            startInput.addEventListener('input', refreshPreview);
+            startInput.addEventListener('change', refreshPreview);
+            pageCountInput.addEventListener('input', refreshPreview);
+            pageCountInput.addEventListener('change', refreshPreview);
+            
+            // Clean listeners to avoid double binding
+            const newSsc = openSscBtn.cloneNode(true);
+            const newHssc = openHsscBtn.cloneNode(true);
+            const newStop = stopBtn.cloneNode(true);
+            openSscBtn.parentNode.replaceChild(newSsc, openSscBtn);
+            openHsscBtn.parentNode.replaceChild(newHssc, openHsscBtn);
+            stopBtn.parentNode.replaceChild(newStop, stopBtn);
+            
+            newSsc.addEventListener('click', (e) => {
+                e.preventDefault();
+                startBatch('ssc');
+            });
+            newHssc.addEventListener('click', (e) => {
+                e.preventDefault();
+                startBatch('hssc');
+            });
+            newStop.addEventListener('click', (e) => {
+                e.preventDefault();
+                stopAllOperations();
+            });
+        }
+        
+        function init() {
+            startInput.value = '';
+            pageCountInput.value = '40';
+            setupEventListeners();
+            refreshPreview();
+            addLog(`📐 Compact launcher ready: all controls in single row`, 'success');
+            addLog(`🪟 Fixed delay 1‑2s, max 50 windows, window size 1100×800`, 'info');
+            addLog(`⚠️ Allow popups when prompted.`, 'warning');
+        }
+        
+        init();
+    })();
+</script>
+</body>
+</html>
