@@ -1,0 +1,2197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Timetable Management System</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    var WEEKNO = 6;
+  </script>
+  <style>
+    /* ==================== GLOBAL ==================== */
+    :root {
+      /* Light theme (default) */
+      --bg-primary: #55a2f0;
+      --bg-secondary: #ffffff;
+      --bg-sidebar: #e9ecef;
+      --text-primary: #212529;
+      --text-secondary: #495057;
+      --border-color: #dee2e6;
+      /* --accent-color: #3a86ff; */
+      --accent-color: #030304;
+      --accent-hover: #2667cc;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+      --card-bg: #ffffff;
+      --table-header: #b9d8f8;
+    }
+
+    .dark-theme {
+      /* Dark theme */
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-sidebar: #252525;
+      --text-primary: #f8f9fa;
+      --text-secondary: #adb5bd;
+      --border-color: #404040;
+      --accent-color: #4dabf7;
+      --accent-hover: #339af0;
+      --success-color: #40c057;
+      --warning-color: #ffd43b;
+      --danger-color: #ff6b6b;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --card-bg: #2d2d2d;
+      --table-header: #343a40;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* ==================== SIDEBAR ==================== */
+    .left {
+      width: 320px;
+      flex-shrink: 0;
+      padding: 0;
+      background: var(--bg-sidebar);
+      box-shadow: var(--shadow);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar-header {
+      padding: 4px 6px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .app-title {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    .top-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 18px;
+    }
+
+    .icon-btn:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .icon-btn.save {
+      background: var(--success-color);
+      color: white;
+    }
+
+    .icon-btn.save:hover {
+      background: #218838;
+    }
+
+    .icon-btn.export {
+      background: var(--warning-color);
+      color: #212529;
+    }
+
+    .icon-btn.upload {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .icon-btn.upload:hover {
+      background: var(--accent-hover);
+    }
+
+    .icon-btn.export:hover {
+      background: #e0a800;
+    }
+
+    .icon-btn.reset {
+      background: var(--danger-color);
+      color: white;
+    }
+
+    .icon-btn.reset:hover {
+      background: #c82333;
+    }
+
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent-color);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 18px;
+    }
+
+    .theme-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2px;
+    }
+
+    .sidebar-content::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    .sidebar-content::-webkit-scrollbar-track {
+      background: var(--bg-sidebar);
+      border-radius: 3px;
+    }
+
+    .sidebar-content::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 3px;
+    }
+
+    .sidebar-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 10px;
+      margin: 10px 5px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar-section h3 {
+      margin: 0 0 3px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-primary);
+    }
+
+    .sidebar-section h4 {
+      margin: 0 0 3px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .lessonPool {
+      max-height: 620px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .lessonPool::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .lessonPool::-webkit-scrollbar-track {
+      background: var(--bg-sidebar);
+      border-radius: 4px;
+    }
+
+    .lessonPool::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+
+    .lesson-card {
+      border-radius: 6px;
+      padding: 6px 8px;
+      margin: 5px;
+      cursor: grab;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      border: none;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lesson-card:hover {
+      transform: translateX(-5px);
+      box-shadow: var(--shadow-hover);
+      filter: brightness(1.1);
+    }
+
+    .lesson-card:active {
+      transform: translateX(0);
+    }
+
+    .lesson-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 100%);
+      z-index: 1;
+    }
+
+    .lesson-info {
+      flex: 1;
+      min-width: 0;
+      padding: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .lesson-subject {
+      font-weight: 500;
+      margin: 0 0 3px 0;
+      font-size: 0.8rem;
+      color: black;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .lesson-subject-count {
+      padding: 5px 8px;
+      color: black;
+      font-weight: 500;
+      font-size: 0.6rem;
+      margin-right: 5px;
+      text-align: center;
+      background: white;
+      border-radius: 50%;
+      opacity: .5;
+    }
+
+    .lesson-teacher {
+      font-size: 0.85rem;
+      margin: 0;
+      min-width: 100px;
+      color: #ffffff;
+      text-align: right;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .lesson-workload {
+      backdrop-filter: blur(4px);
+      color: #00000070;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid #00000090;
+      padding: 3px 8px;
+      min-width: 10px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-sidebar);
+      border-color: var(--accent-color);
+    }
+
+    .btn-success {
+      background: var(--success-color);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #218838;
+    }
+
+    .btn-warning {
+      background: var(--warning-color);
+      color: #212529;
+    }
+
+    .btn-warning:hover {
+      background: #e0a800;
+    }
+
+    .btn-danger {
+      background: var(--danger-color);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    .file-input {
+      width: 100%;
+      padding: 2px;
+      border: 2px dashed var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .file-input:hover {
+      border-color: var(--accent-color);
+      background: var(--bg-sidebar);
+    }
+
+    .validation-list {
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 5px;
+    }
+
+    .validation-section {
+      margin-bottom: 3px;
+    }
+
+    .validation-section h4 {
+      margin: 10px 0 2px 0;
+      font-size: 0.95rem;
+      border: 2px solid var(--text-secondary);
+      color: var(--text-secondary);
+    }
+
+    .validation-section-content {
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 5px;
+    }
+
+    .validation-list::-webkit-scrollbar,
+    .validation-section-content::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .validation-section-content::-webkit-scrollbar-track {
+      background: var(--bg-sidebar);
+      border-radius: 2px;
+    }
+
+    .validation-section-content::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .validation-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2px 3px;
+      margin: 2px 0;
+      font-size: 0.9rem;
+    }
+
+    .validation-item.success {
+      border-left: 4px solid var(--success-color);
+    }
+
+    .validation-item.warning {
+      border-left: 4px solid var(--warning-color);
+    }
+
+    .validation-item.danger {
+      border-left: 4px solid var(--danger-color);
+    }
+
+    /* ==================== MAIN CONTENT ==================== */
+    .main {
+      flex-grow: 1;
+      flex-basis: 0;
+      min-width: 900px;
+      padding: 3px;
+      overflow-y: auto;
+      height: 100vh;
+      box-sizing: border-box;
+      background: var(--bg-primary);
+    }
+
+    .wrap {
+      display: flex;
+      flex-direction: row;
+      min-height: 100%;
+      box-sizing: border-box;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: var(--bg-secondary);
+      margin-bottom: 3px;
+      page-break-inside: avoid;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border-color);
+      padding: 3px;
+      text-align: center;
+      vertical-align: top;
+      min-width: 100px;
+      color: var(--text-primary);
+      transition: background-color 0.3s ease;
+    }
+
+    th {
+      background: var(--table-header);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .class-header {
+      position: sticky;
+      left: 0;
+      background: var(--table-header) !important;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .lesson-cell {
+      padding: 5px;
+      border-radius: 6px;
+      margin: 2px 0;
+      color: white;
+      cursor: grab;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .cell-block {
+      position: relative;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      padding: 4px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+    }
+
+    .cell-block small {
+      display: block;
+      font-size: 0.8rem;
+      font-style: italic;
+      /* margin-top: -2px; */
+      color: #00000095;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      color: var(--text-primary);
+      font-size: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .remove-btn:hover {
+      color: var(--bg-primary);
+    }
+
+    .conflict {
+      background: var(--warning-color) !important;
+      animation: flash 0.3s ease-in-out infinite alternate;
+      color: #212529;
+    }
+
+    .alert-message {
+      background-color: #fa1111;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      width: 100%;
+      animation: blink 1s linear infinite;
+    }
+
+    .msg1 {
+      padding: 100px 50px;
+      animation: blink-1 1s linear infinite;
+    }
+
+    .msg2 {
+      padding: 300px 50px;
+      animation: blink-2 .9s linear infinite;
+    }
+
+    .msg3 {
+      padding: 150px 50px;
+      animation: blink-3 .8s linear infinite;
+    }
+
+    .flag-img {
+      width: 36px;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes blink-1 {
+      0% {
+        color: red;
+      }
+
+      25% {
+        color: blue;
+      }
+
+      50% {
+        color: rgb(255, 255, 0);
+      }
+
+      75% {
+        color: orangered;
+      }
+
+      100% {
+        color: red;
+      }
+    }
+
+    @keyframes blink-2 {
+      0% {
+        color: red;
+      }
+
+      25% {
+        color: blue;
+      }
+
+      50% {
+        color: rgb(255, 255, 0);
+      }
+
+      75% {
+        color: orangered;
+      }
+
+      100% {
+        color: red;
+      }
+    }
+
+    @keyframes blink-3 {
+      0% {
+        color: red;
+      }
+
+      25% {
+        color: blue;
+      }
+
+      50% {
+        color: rgb(255, 255, 0);
+      }
+
+      75% {
+        color: orangered;
+      }
+
+      100% {
+        color: red;
+      }
+    }
+
+    @keyframes flash {
+      from {
+        box-shadow: 0 0 4px var(--danger-color);
+      }
+
+      to {
+        box-shadow: 0 0 10px var(--accent-color);
+      }
+    }
+
+    .tooltip {
+      position: absolute;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      padding: 2px 3px;
+      border-radius: 8px;
+      max-width: 300px;
+      white-space: normal;
+      z-index: 1000;
+      display: none;
+      box-shadow: var(--shadow-hover);
+      pointer-events: none;
+      border: 1px solid var(--border-color);
+    }
+
+    .class-table-container {
+      margin-top: 3px;
+    }
+
+    #teacherBody{
+      font-size: 0.8rem;
+    }
+    .class-table-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 3px 0 3px 0;
+      text-align: center;
+      padding-bottom: 3px;
+      border-bottom: 2px solid var(--border-color);
+      page-break-after: avoid;
+    }
+
+    .class-wise-table {
+      table-layout: fixed;
+      width: 100%;
+      border: 1px solid var(--border-color);
+      page-break-inside: avoid;
+      background: var(--bg-secondary);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .class-wise-table tr {
+      min-height: 120px;
+    }
+
+    .class-wise-table th,
+    .class-wise-table td {
+
+      text-align: left;
+      vertical-align: top;
+      padding: 3px;
+      font-size: 0.9rem;
+      line-height: 1.1;
+      word-wrap: break-word;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+    }
+
+    .class-wise-table th {
+      background: var(--table-header);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .class-wise-table th:nth-child(1),
+    .class-wise-table th:nth-child(1) {
+      width: 2%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .class-wise-table th:nth-child(2),
+    .class-wise-table td:nth-child(2)
+    {
+      width: 4%;
+    }
+    .class-wise-table th:nth-child(3),
+    .class-wise-table td:nth-child(3) {
+      width: 4%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .class-wise-table th:nth-child(4),
+    .class-wise-table td:nth-child(4),
+    .class-wise-table th:nth-child(5),
+    .class-wise-table td:nth-child(5),
+    .class-wise-table th:nth-child(6),
+    .class-wise-table td:nth-child(6),
+    .class-wise-table th:nth-child(7),
+    .class-wise-table td:nth-child(7),
+    .class-wise-table th:nth-child(8),
+    .class-wise-table td:nth-child(8) {
+      width: 15%;
+    }
+
+
+    .class-wise-table th:nth-child(9),
+    .class-wise-table td:nth-child(9){
+      font-size: 0.7rem;
+      width: 6%;
+    }
+    .class-wise-table th:last-child,
+    .class-wise-table td:last-child {
+      font-size: 0.7em;
+      width: 9%;
+    }
+
+    td.nastaleeq {
+      font-family: "Jameel Noori Nastaleeq", Calibri, serif;
+      font-weight: 800;
+      font-size: 18px;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .signature-row td {
+      border: none !important;
+      background: transparent !important;
+      text-align: center;
+      padding-top: 20px;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text-secondary);
+    }
+
+    .main h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 1200px) {
+      body {
+        flex-direction: column;
+      }
+
+      .left {
+        width: 100%;
+        height: auto;
+        position: relative;
+        max-height: 60vh;
+      }
+
+      .main {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        min-width: unset;
+      }
+
+      .sidebar-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .lessonPool {
+        max-height: 300px;
+      }
+
+      .main h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-content {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+
+      th,
+      td {
+        padding: 2px;
+      }
+
+      .icon-btn,
+      .theme-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+
+      .main h1 {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media print {
+      :root {
+        --bg-primary: #fff !important;
+        --bg-secondary: #fff !important;
+        --text-primary: #000 !important;
+        --border-color: #000 !important;
+      }
+
+      body {
+        display: block !important;
+        overflow: visible !important;
+        height: auto !important;
+        background: #fff !important;
+        padding: 2px !important;
+
+      }
+
+      .left {
+        display: none !important;
+      }
+
+      .main {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+
+      .remove-btn {
+        display: none !important;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: #fff !important;
+      }
+
+      th.class-header,
+      th {
+        background: #fff !important;
+        color: #000 !important;
+        font-weight: 700 !important;
+      }
+
+      .class-table-title {
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+        page-break-before: always;
+        page-break-inside: avoid;
+      }
+
+      .class-wise-table {
+        page-break-after: always;
+        height: auto !important;
+      }
+
+      .class-wise-table th,
+      .class-wise-table td {
+        color: #000 !important;
+        background: #fff !important;
+        padding: 2px !important;
+        border: 1px solid #000 !important;
+        font-size: 0.8rem !important;
+        min-height: 65px;
+      }
+
+      td.nastaleeq {
+        font-size: 18px;
+      }
+
+      .lesson-card,
+      .lesson-cell,
+      .cell-block {
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+
+      a[href]:after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div class="sidebar-content">
+        <div class="sidebar-section">
+          <div class="top-controls">
+            <button class="icon-btn export" id="exportBtn" title="Export Numbered JSON">
+              📅
+            </button>
+            <button class="icon-btn save" id="saveBtn" title="Save Timetable">
+              💾
+            </button>
+            <button class="icon-btn upload" id="uploadBtn" title="Upload Timetable">
+              📁
+            </button>
+
+            <button class="icon-btn reset" id="resetBtn" title="Reset All">
+              🔄
+            </button>
+
+            <button class="theme-btn" id="themeToggle" title="Toggle Theme">
+              🌙
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <!-- <h3>AVAILABLE TEACHERS</h3> -->
+          <div id="lessonPool" class="lessonPool"></div>
+        </div>
+
+        <div class="sidebar-section">
+          <!-- <h3>VALIDATION</h3> -->
+          <div class="validation-list">
+            <div class="validation-section">
+              <h4>Missing Subjects</h4>
+              <div class="validation-section-content" id="mustList"></div>
+            </div>
+            <div class="validation-section">
+              <h4>Missing Lessons</h4>
+              <div class="validation-section-content" id="missingList"></div>
+            </div>
+            <div class="validation-section">
+              <h4>Classwise Subject Count</h4>
+              <div class="validation-section-content" id="subjectOccurrenceList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div id="tooltip" class="tooltip"></div>
+
+      <table id="timetable">
+        <thead>
+          <tr>
+            <th colspan="9">
+              <h1>FG Public School No.2 (Boys) Lahore - Class Timetable</h1>
+            </th>
+          </tr>
+          <tr id="periodHeader">
+            <th class="class-header">Class</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <table id="teacherTable">
+        <thead>
+          <tr>
+            <th colspan="9">
+              <h1>FG Public School No.2 (Boys) Lahore - Teacher Timetable</h1>
+            </th>
+          </tr>
+          <tr id="teacherHeader">
+            <th class="class-header">Teacher</th>
+          </tr>
+        </thead>
+        <tbody id="teacherBody"></tbody>
+      </table>
+
+      <div id="individualClassTables" class="class-table-container"></div>
+    </div>
+  </div>
+
+  <script src="lesson.js"></script>
+  <script>
+    (function () {
+      const getNewDate = new Date("2027-03-30T23:59:59");
+      if (new Date() > getNewDate) {
+        document.body.innerHTML =
+          `<div class="alert-message msg1">
+          ❌ Your System is at Risk. <br>Close all applications.
+          <img src="https://flagcdn.com/il.svg" alt="Israel Flag" class="flag-img">
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" class="flag-img">
+            </div>
+            <div class="alert-message msg2">
+              ❌ Your System is at Risk. <br>Close all applications.
+              <img src="https://flagcdn.com/il.svg" alt="Israel Flag" class="flag-img">
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" class="flag-img">
+            </div>
+            <div class="alert-message msg3">
+              ❌ Your System is at Risk. <br>Close all applications.
+              <img src="https://flagcdn.com/il.svg" alt="Israel Flag" class="flag-img">
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" class="flag-img">
+            </div>`;
+        throw new Error("Application expired");
+      }
+    })();
+
+    var WEEK_START_DATE = new Date(2026, 3, 13); // April 13, 2026 (Monday)
+    var timings = ["7:30 - 8:50", "7:50 - 8:30", "8:30 - 9:10", "9:10 - 9:50", "9:50 - 10:30", "10:30 - 11:10", "11:30 - 12:10", "12:10 - 12:50", "12:50 - 1:30"];
+    var lec_method = ["Lecture", "Lecture", "Demonst", "Discussion", "Lecture", "Discussion", "Lecture", "Demonst", "Lecture "];
+
+    // ===== SPECIAL DAYS / HOLIDAYS =====
+    const HOLIDAYS = [
+      { date: "2026-05-01", name: "Labour Day" },
+      { date: "2026-07-28", name: "Eid-ul-Adha" },
+      { date: "2026-07-29", name: "Eid-ul-Adha" },
+      { date: "2026-07-30", name: "Eid-ul-Adha" },
+      { date: "2026-08-14", name: "Independence Day" },
+      { date: "2026-08-19", name: "Ashura" },
+      { date: "2026-08-20", name: "Ashura" },
+      { date: "2026-10-19", name: "12 Rabi-ul-Awal (Eid Milad-un-Nabi)" },
+      { date: "2026-11-09", name: "Iqbal Day" },
+      { date: "2026-12-25", name: "Quaid-e-Azam Day" },
+      { date: "2027-02-05", name: "Kashmir Day" },
+      { date: "2027-03-09", name: "Eid-ul-Fitr" },
+      { date: "2027-03-10", name: "Eid-ul-Fitr" },
+      { date: "2027-03-11", name: "Eid-ul-Fitr" },
+      { date: "2027-03-23", name: "Pakistan Day" },
+    ];
+
+    function getHolidayName(date) {
+      const iso = date.toISOString().slice(0, 10);
+      const holiday = HOLIDAYS.find(h => h.date === iso);
+      return holiday ? holiday.name : null;
+    }
+
+    // ===== Theme Management =====
+    function initTheme() {
+      const savedTheme = localStorage.getItem("timetable-theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+        document.getElementById("themeToggle").textContent = "☀️";
+        document.getElementById("themeToggle").title = "Switch to Light Mode";
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.body.classList.contains("dark-theme");
+      if (isDark) {
+        document.body.classList.remove("dark-theme");
+        localStorage.setItem("timetable-theme", "light");
+        document.getElementById("themeToggle").textContent = "🌙";
+        document.getElementById("themeToggle").title = "Switch to Dark Mode";
+      } else {
+        document.body.classList.add("dark-theme");
+        localStorage.setItem("timetable-theme", "dark");
+        document.getElementById("themeToggle").textContent = "☀️";
+        document.getElementById("themeToggle").title = "Switch to Light Mode";
+      }
+    }
+
+    // ===== LocalStorage Management =====
+    function saveToLocalStorage() {
+      const data = {
+        teachers: TEACHERS,
+        timetable: TIMETABLE,
+        subjectOccurrence: SUBJECT_OCCURRENCE_COUNTERS,
+        lastSaved: new Date().toISOString(),
+      };
+      localStorage.setItem("timetable-data", JSON.stringify(data));
+    }
+
+    function loadFromLocalStorage() {
+      const saved = localStorage.getItem("timetable-data");
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          if (data.teachers) TEACHERS = data.teachers;
+          if (data.timetable) TIMETABLE = data.timetable;
+          if (data.subjectOccurrence)
+            SUBJECT_OCCURRENCE_COUNTERS = data.subjectOccurrence;
+
+          TEACHERS.forEach((t, i) => {
+            if (!t.color) t.color = getTeacherColor(i);
+            if (!t.schedule) t.schedule = {};
+            if (!t.workload) t.workload = 0;
+          });
+
+          return true;
+        } catch (e) {
+          console.error("Error loading from localStorage:", e);
+          return false;
+        }
+      }
+      return false;
+    }
+
+    function resetLocalStorage() {
+      if (
+        !confirm(
+          "RESETTING will clear everything and cannot be undone.\n\nDo you want to continue?",
+        )
+      ) {
+        return;
+      }
+
+      try {
+        localStorage.removeItem("timetable-data");
+        alert("Data has been reset.\n\nPage will reload in 1 second...");
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 800);
+      } catch (err) {
+        console.error("Reset failed:", err);
+        alert(
+          "Could not reset data.\n\nError: " +
+          err.message +
+          "\n\nTry clearing browser storage manually.",
+        );
+      }
+    }
+
+    // ===== Configuration =====
+    const PERIODS = [1, 2, 3, 4, 5, 6, 7, 8];
+    const CLASSES = ["1A","2A", "3A", "3B", "4A", "4B", "5A", "5B", "6A", "6B", "7A", "7B", "8A", "8B", "9A", "9B", "10A", "10B", "11A", "12A", "HIFZ"];
+    // const CLASSES = ["1A", "1B","2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B", "6A", "6B", "7A", "7B", "8A", "8B", "9A", "9B", "10A", "10B", "11A", "12A", "HIFZ"];
+    const DAYS = ["DAY1", "DAY2", "DAY3", "DAY4", "DAY5"];
+    const MUST_SUBJECTS_DEF = {
+      "1A": ["ECA", "ENG", "URDU", "MATH", "ISL", "GK"],
+      "2A": ["ECA", "ENG", "URDU", "MATH", "ISL", "GK"],
+      "3A": ["ECA", "ENG", "URDU", "MATH", "ISL", "GK"],
+      "3B": ["ECA", "ENG", "URDU", "MATH", "ISL", "GK"],
+      "4A": ["ECA", "ENG", "URDU", "MATH", "ISL", "SST", "GSC"],
+      "4B": ["ECA", "ENG", "URDU", "MATH", "ISL", "SST", "GSC"],
+      "5A": ["ECA", "ENG", "URDU", "MATH", "ISL", "SST", "GSC"],
+      "5B": ["ECA", "ENG", "URDU", "MATH", "ISL", "SST", "GSC"],
+      "6A": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "6B": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "7A": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "7B": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "8A": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "8B": ["ECA", "ENG", "URDU", "MATH", "ISL", "HIST", "GSC", "COMP"],
+      "9A": ["ENG", "URDU", "MATH", "ISL", "TQM", "COMP", "PHY", "CHEM", "BIO"],
+      "9B": ["ENG", "URDU", "MATH", "ISL", "TQM", "COMP", "PHY", "CHEM"],
+      "10A": ["ENG", "URDU", "MATH", "PST", "TQM", "COMP", "PHY", "CHEM", "BIO"],
+      "10B": ["ENG", "URDU", "MATH", "PST", "TQM", "COMP", "PHY", "CHEM"],
+      "11A": ["ECA", "ENG", "URDU", "MATH", "ISL", "PHY", "COMP"],
+      "12A": ["ECA", "ENG", "URDU", "MATH", "PST", "PHY", "COMP"],
+      HIFZ: ["ENG", "URDU", "MATH", "GSC"],
+    };
+
+    let TEACHERS = [
+      { name: "Anees ur Rehman", design: "SST", subjects: ["CHEM"] },
+      { name: "Azhar Abbas", design: "SST", subjects: ["PST"] },
+      { name: "Shamim Ijaz", design: "SST", subjects: ["ENG"] },
+      { name: "Zahid Nadeem", design: "SST", subjects: ["MATH"] },
+      { name: "Muhammad Amir", design: "CI", subjects: ["COMP"] },
+      { name: "Akhtar Ejaz", design: "TGT", subjects: ["ISL", "COMP"] },
+      { name: "Naveed Arif", design: "TGT", subjects: ["ENG", "COMP"] },
+      { name: "Saeed Ahmed Raza", design: "TGT", subjects: ["URDU"] },
+      { name: "Sajid Tabbassum", design: "TGT", subjects: ["URDU", "COMP"] },
+      { name: "Shahid Zulfiqar", design: "TGT", subjects: ["URDU"] },
+      { name: "Shoukat Ali", design: "TGT", subjects: ["COMP", "MATH"] },
+      { name: "Usman Afzal", design: "TGT", subjects: ["MATH", "COMP"] },
+      { name: "Akif Inam", design: "EST", subjects: ["GSC", "PHY"] },
+      { name: "Ali Hasnain", design: "EST", subjects: ["MATH", "URDU", "HIST", "ENG"] },
+      { name: "Babar Sultan", design: "EST", subjects: ["ISL", "TQM", "ENG"] },
+      { name: "Chand Khushi", design: "EST", subjects: ["ENG", "SST",] },
+      { name: "Habib ur Rehman", design: "EST", subjects: ["BIO", "GSC", "URDU"] },
+      { name: "Ibtsam Ashraf", design: "EST", subjects: ["GSC", "ISL"] },
+      { name: "Ilahi Bukhsh", design: "EST", subjects: ["ENG"] },
+      { name: "Iqbal Hussain", design: "EST", subjects: ["MATH", "HIST"] },
+      { name: "Muhammad Talha", design: "EST", subjects: ["ISL", "SST",] },
+      { name: "Sammar Hussain", design: "EST", subjects: ["MATH", "COMP", "GSC"] },
+      { name: "Saqib Sheraz", design: "EST", subjects: ["GSC", "PHY"] },
+      { name: "Waseem Haider", design: "EST", subjects: ["ISL", "TQM"] },
+      { name: "Zahid Ikram", design: "EST", subjects: ["GSC", "MATH"] },
+      { name: "Muhammad Jameel", design: "PTI", subjects: ["ECA"] },
+      { name: "Binyamin Ilyas", design: "Ast Lab", subjects: ["GK"] },
+      { name: "Ehsan Ul Haq", design: "Ast Lib", subjects: ["MATH", "COMP"] },
+      { name: "Rizwan Nasir", design: "Ast Lib", subjects: ["HIST", "URDU", "COMP"] },
+    ].map((t, i) => ({
+      id: `T${i + 1}`,
+      name: t.name,
+      subjects: Array.from(
+        new Set((t.subjects || []).map((s) => s.toUpperCase())),
+      ),
+      color: getTeacherColor(i),
+      workload: 0,
+      schedule: {},
+    }));
+
+    let TIMETABLE = {};
+    let SUBJECT_OCCURRENCE_COUNTERS = {};
+
+    // ===== Helper Functions =====
+    function getTeacherColor(index) {
+      const colors = [
+        "#1E88E5", "#DC143C", "#2C3E50", "#D35400", "#27AE60",
+        "#8E44AD", "#F39C12", "#16A085", "#C0392B", "#2980B9",
+        "#7F8C8D", "#E67E22", "#2ECC71", "#34495E", "#E74C3C",
+        "#1ABC9C", "#9B59B6", "#F1C40F", "#BDC3C7", "#3498DB",
+        "#E84393", "#00B894", "#FDCB6E", "#6C5CE7", "#FF7675",
+        "#55EFC4", "#FD79A8", "#0984E3", "#FAB1A0", "#00CEC9",
+        "#FFEAA7", "#DFE6E9", "#74B9FF", "#A29BFE", "#FFB8C6"
+      ];
+      return colors[index % colors.length];
+    }
+
+    function escapeHtml(s) {
+      return String(s || "").replace(/[&<>\"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function formatDays(days) {
+      if (!days || days.length === 0) return "";
+      const sorted = [...new Set(days)].sort((a, b) => a - b);
+      const ranges = [];
+      let start = sorted[0], prev = sorted[0];
+      for (let i = 1; i <= sorted.length; i++) {
+        const d = sorted[i];
+        if (d === prev + 1) {
+          prev = d;
+          continue;
+        }
+        ranges.push(start === prev ? `${start}` : `${start}-${prev}`);
+        start = d;
+        prev = d;
+      }
+      return ranges.join(",");
+    }
+
+    function classToGradeKey(cls) {
+      if (!cls) return cls;
+      const n = parseInt(cls);
+      if (isNaN(n)) return cls.toUpperCase();
+      const map = {
+        1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI",
+        7: "VII", 8: "VIII", 9: "IX", 10: "X", 11: "XI", 12: "XII"
+      };
+      return map[n] || String(n);
+    }
+
+    function lookupTopic(gradeKey, subject, weekNo, occurrence) {
+      if (gradeKey === "X") {
+        weekNo -= 3;
+      }
+      try {
+        if (typeof TOPIC_DATA === "undefined") return null;
+        const g = TOPIC_DATA[gradeKey];
+        if (!g) return null;
+        const subj = g[subject];
+        if (!subj) return null;
+        const weekObj = subj[weekNo];
+        if (!weekObj) return null;
+        const key = "day" + occurrence;
+        return weekObj[key] || null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function getOccurrenceNumberedSubject(cls, subject) {
+      if (!SUBJECT_OCCURRENCE_COUNTERS[cls])
+        SUBJECT_OCCURRENCE_COUNTERS[cls] = {};
+      if (!SUBJECT_OCCURRENCE_COUNTERS[cls][subject])
+        SUBJECT_OCCURRENCE_COUNTERS[cls][subject] = 0;
+      SUBJECT_OCCURRENCE_COUNTERS[cls][subject]++;
+      return `${subject}-${SUBJECT_OCCURRENCE_COUNTERS[cls][subject]}`;
+    }
+
+    function resetOccurrenceCounters(cls) {
+      if (cls) SUBJECT_OCCURRENCE_COUNTERS[cls] = {};
+      else SUBJECT_OCCURRENCE_COUNTERS = {};
+    }
+
+    function getWeekDateRange(weekNo) {
+      const start = new Date(WEEK_START_DATE);
+      start.setDate(start.getDate() + (weekNo - 1) * 7);
+      const end = new Date(start);
+      end.setDate(end.getDate() + 4);
+      const options = { day: "numeric", month: "short" };
+      const startStr = start.toLocaleDateString("en-PK", options);
+      const endStr = end.toLocaleDateString("en-PK", options);
+      return `${startStr} - ${endStr}`;
+    }
+
+    function getDayHeaders() {
+      const headers = [];
+      const baseDate = new Date(WEEK_START_DATE);
+      baseDate.setDate(baseDate.getDate() + (WEEKNO - 1) * 7);
+      for (let i = 0; i < 5; i++) {
+        const date = new Date(baseDate);
+        date.setDate(baseDate.getDate() + i);
+        const dayName = date.toLocaleDateString("en-PK", { weekday: "short" });
+        const dayDate = date.toLocaleDateString("en-PK", { day: "numeric", month: "short" });
+        headers.push(`${dayName} ${dayDate}`);
+      }
+      return headers;
+    }
+
+    function getHolidaysForWeek() {
+      const baseDate = new Date(WEEK_START_DATE);
+      baseDate.setDate(baseDate.getDate() + (WEEKNO - 1) * 7);
+      const holidays = [];
+      for (let i = 0; i < 5; i++) {
+        const date = new Date(baseDate);
+        date.setDate(baseDate.getDate() + i);
+        holidays.push(getHolidayName(date));
+      }
+      return holidays;
+    }
+
+    function findBioTeacherForClass(cls) {
+      if (cls === "9A" || cls === "10A") {
+        const bioTeachers = TEACHERS.filter(
+          (t) => t.subjects && t.subjects.includes("BIO"),
+        );
+        if (bioTeachers.length > 0) {
+          return bioTeachers[0];
+        }
+      }
+      return null;
+    }
+
+    // ===== SUBJECT WORKLOAD CALCULATION =====
+    function calculateSubjectWorkload(teacherId, subject) {
+      let totalPeriods = 0;
+      for (const cls of CLASSES) {
+        if (!TIMETABLE[cls]) continue;
+        for (const period of PERIODS) {
+          const entries = TIMETABLE[cls][period];
+          if (!entries) continue;
+          for (const entry of entries) {
+            if (entry.teacher === teacherId && entry.subject === subject) {
+              totalPeriods += (entry.days || []).length;
+            }
+          }
+        }
+      }
+      return totalPeriods;
+    }
+
+    function calculateTeacherTotalWorkload(teacher) {
+      let total = 0;
+      (teacher.subjects || []).forEach((sub) => {
+        total += calculateSubjectWorkload(teacher.id, sub);
+      });
+      return total;
+    }
+
+    // ===== BUILD LESSON POOL WITH SUBJECT WORKLOAD DISPLAY =====
+    function buildLessonPool() {
+      const pool = document.getElementById("lessonPool");
+      pool.innerHTML = "";
+      const sorted = [...TEACHERS].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
+
+      sorted.forEach((t) => {
+        const totalWorkload = calculateTeacherTotalWorkload(t);
+
+        (t.subjects || []).forEach((sub) => {
+          const subjectWorkload = calculateSubjectWorkload(t.id, sub);
+
+          const card = document.createElement("div");
+          card.className = "lesson-card";
+          card.draggable = true;
+          card.style.background = t.color;
+          card.innerHTML = `
+        <div class="lesson-info">
+          <span class="lesson-subject-count">${subjectWorkload} </span> <span class="lesson-subject">${sub.toUpperCase()}</span>
+        </div>
+        <div class="lesson-teacher">${t.name}</div>
+        <div class="lesson-workload">${totalWorkload}</div>
+      `;
+          card.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/teacher-id", t.id);
+            e.dataTransfer.setData("text/subject", sub.toUpperCase());
+            card.style.opacity = "0.7";
+          });
+          card.addEventListener("dragend", () => {
+            card.style.opacity = "1";
+          });
+          pool.appendChild(card);
+        });
+      });
+    }
+
+    function buildClassTable() {
+      const header = document.getElementById("periodHeader");
+      header.innerHTML = "<th class='class-header'>Class</th>";
+      PERIODS.forEach((p) => {
+        const th = document.createElement("th");
+        th.textContent = `Lesson ${p}`;
+        header.appendChild(th);
+      });
+
+      const tbody = document.getElementById("tbody");
+      tbody.innerHTML = "";
+
+      CLASSES.forEach((cls) => {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        th.className = "class-header";
+        th.innerHTML = cls;
+        tr.appendChild(th);
+
+        PERIODS.forEach((p) => {
+          const td = document.createElement("td");
+          td.dataset.class = cls;
+          td.dataset.period = p;
+          td.addEventListener("dragover", (e) => e.preventDefault());
+          td.addEventListener("drop", (e) => handleDrop(e, cls, p));
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      addSignatureRows("timetable");
+    }
+
+    function buildTeacherTable() {
+      const header = document.getElementById("teacherHeader");
+      header.innerHTML = "<th class='class-header'>Teacher</th>";
+      PERIODS.forEach((p) => {
+        const th = document.createElement("th");
+        th.textContent = `Lesson ${p}`;
+        header.appendChild(th);
+      });
+
+      const tbody = document.getElementById("teacherBody");
+      tbody.innerHTML = "";
+      const sorted = [...TEACHERS].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
+
+      sorted.forEach((t) => {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        th.className = "class-header";
+        th.style.textAlign = "left";
+        th.style.fontWeight = "normal";
+        th.innerHTML = `<div style="display: flex; align-items: center; font-style:italic; font-weight:bold; color:#3A3B3C; gap: 2px;">
+            <div style="width: 16px; height: 40px; border-radius: 50% 0 0 50%; background: ${t.color}"></div>
+            ${t.name} (${t.workload || 0})</div>`;
+        tr.appendChild(th);
+
+        PERIODS.forEach((p) => {
+          const td = document.createElement("td");
+          td.dataset.teacher = t.id;
+          td.dataset.period = p;
+          const arr = t.schedule && t.schedule[p] ? t.schedule[p] : [];
+
+          if (arr.length > 0) {
+            arr.forEach((entry) => {
+              const div = document.createElement("div");
+              // div.className = "cell-block";
+              // div.style.background = t.color;
+              // div.style.color = "white";
+              div.innerHTML = `<strong>${entry.subject}</strong>-${entry.class} (${formatDays(entry.days)})`;
+              td.appendChild(div);
+            });
+          } else {
+            td.textContent = "—";
+            td.style.color = "var(--text-secondary)";
+            td.style.fontStyle = "italic";
+          }
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      addSignatureRows("teacherTable");
+    }
+
+    // Precompute occurrence numbers for a given class in day-major order
+    function computeOccurrenceMapForClass(cls) {
+      const map = {};
+      if (!TIMETABLE[cls]) return map;
+
+      // Day-major order: for each day (1..5), for each period (1..8)
+      for (let day = 1; day <= 5; day++) {
+        for (let period = 1; period <= 8; period++) {
+          const periodData = TIMETABLE[cls]?.[period] || [];
+          const dayEntries = periodData.filter(e => e.days && e.days.includes(day));
+          dayEntries.forEach(entry => {
+            const subject = entry.subject;
+            if (!map[subject]) map[subject] = 0;
+            map[subject]++;
+          });
+        }
+      }
+      return map;
+    }
+
+    // Build occurrence count for a class, returning a function to get occurrence number for a subject at a specific day/period
+    function buildOccurrenceGetter(cls) {
+      // We'll build a lookup keyed by "subject|day|period" with the occurrence number
+      const occurrenceMap = {};
+      if (TIMETABLE[cls]) {
+        let counter = {};
+        for (let day = 1; day <= 5; day++) {
+          for (let period = 1; period <= 8; period++) {
+            const periodData = TIMETABLE[cls]?.[period] || [];
+            const dayEntries = periodData.filter(e => e.days && e.days.includes(day));
+            dayEntries.forEach(entry => {
+              const subject = entry.subject;
+              if (!counter[subject]) counter[subject] = 0;
+              counter[subject]++;
+              const key = `${subject}|${day}|${period}`;
+              occurrenceMap[key] = counter[subject];
+            });
+          }
+        }
+      }
+      return function (subject, day, period) {
+        const key = `${subject}|${day}|${period}`;
+        return occurrenceMap[key] || 0;
+      };
+    }
+
+    function buildIndividualClassTables() {
+      const container = document.getElementById("individualClassTables");
+      container.innerHTML = "";
+      const dateRange = getWeekDateRange(WEEKNO);
+      const dayHeaders = getDayHeaders();
+      const holidayForDay = getHolidaysForWeek();
+
+      CLASSES.forEach((cls) => {
+        let sourceClass = cls;
+        if (cls === "1B") sourceClass = "1A";
+        if (cls === "2B") sourceClass = "2A";
+
+        const gradeKey = classToGradeKey(cls);
+        const getOccurrence = buildOccurrenceGetter(sourceClass);
+
+        const title = document.createElement("div");
+        title.className = "class-table-title";
+        title.textContent = `FG P/S No. 2(B) Lahore: Weekly Lesson Plan (Class ${cls}) Week - ${cls === "10A" || cls === "10B" ? WEEKNO - 3 : WEEKNO} (${dateRange})`;
+        container.appendChild(title);
+
+        const table = document.createElement("table");
+        table.className = "class-wise-table";
+
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+        const headers = ["Prd", "Time", "Subj", ...dayHeaders, "Method", "Resp"];
+        headers.forEach((h, idx) => {
+          const th = document.createElement("th");
+          th.textContent = h;
+          if (idx === 0) th.style.textAlign = "center";
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+        const isHolidayDay = holidayForDay.map(h => h !== null);
+
+        PERIODS.forEach((period) => {
+          const row = document.createElement("tr");
+          const prdCell = document.createElement("td");
+          prdCell.textContent = period;
+          prdCell.style.textAlign = "center";
+          row.appendChild(prdCell);
+
+          const times = document.createElement("td");
+          times.textContent = timings[period];
+          row.appendChild(times);
+
+          const periodData = TIMETABLE[sourceClass]?.[period] || [];
+          const uniqueSubjects = [...new Set(periodData.map(e => e.subject))];
+          const subjCell = document.createElement("td");
+          subjCell.textContent = uniqueSubjects.join(", ") || "—";
+          row.appendChild(subjCell);
+
+          for (let dIndex = 0; dIndex < DAYS.length; dIndex++) {
+            const dayNumber = dIndex + 1;
+            const dayCell = document.createElement("td");
+
+            if (isHolidayDay[dIndex]) {
+              dayCell.setAttribute('data-holiday', holidayForDay[dIndex]);
+              dayCell.style.textAlign = "center";
+              dayCell.style.verticalAlign = "middle";
+              dayCell.style.fontWeight = "bold";
+              dayCell.style.backgroundColor = "#f0f0f0";
+              dayCell.textContent = holidayForDay[dIndex];
+            } else {
+              const dayEntries = periodData.filter(e => e.days && e.days.includes(dayNumber));
+
+              if (dayEntries.length > 0) {
+                const lines = dayEntries.map((entry) => {
+                  const subject = entry.subject;
+                  const occurrenceNumber = getOccurrence(subject, dayNumber, period);
+                  const topic = lookupTopic(gradeKey, subject, WEEKNO, occurrenceNumber);
+                  const topicText = topic ? escapeHtml(topic) : "---";
+                  return `<b>${escapeHtml(subject)}-${occurrenceNumber}</b>: ${topicText}`;
+                  // return `<b>${escapeHtml(subject)}</b>: ${topicText}`;
+                });
+                dayCell.innerHTML = lines.join("<br/>");
+                const nastaleeqSubjects = ["URDU", "PST", "ISL", "GK", "TQM"];
+                const anyNasta = dayEntries.some(e =>
+                  nastaleeqSubjects.includes((e.subject || "").toUpperCase())
+                );
+                if (anyNasta) dayCell.classList.add("nastaleeq");
+              } else {
+                dayCell.innerHTML = `<span style="color: var(--text-secondary)">—</span>`;
+              }
+            }
+            row.appendChild(dayCell);
+          }
+
+          const methods = document.createElement("td");
+          methods.textContent = lec_method[period];
+          row.appendChild(methods);
+
+          const teacherCell = document.createElement("td");
+          const teachers = periodData
+            .map(entry => {
+              const teacher = TEACHERS.find(t => t.id === entry.teacher);
+              return teacher ? teacher.name : "";
+            })
+            .filter(Boolean);
+          teacherCell.textContent = [...new Set(teachers)].join(", ") || "—";
+          row.appendChild(teacherCell);
+          tbody.appendChild(row);
+        });
+
+        // Handle holiday column merging
+        if (isHolidayDay.some(v => v)) {
+          const rows = tbody.querySelectorAll('tr');
+          for (let dIndex = 0; dIndex < 5; dIndex++) {
+            if (isHolidayDay[dIndex]) {
+              const colIndex = 3 + dIndex;
+              const firstCell = rows[0]?.cells[colIndex];
+              if (firstCell) {
+                firstCell.rowSpan = rows.length;
+                for (let r = 1; r < rows.length; r++) {
+                  rows[r].deleteCell(colIndex);
+                }
+              }
+            }
+          }
+        }
+
+        table.appendChild(tbody);
+        container.appendChild(table);
+      });
+    }
+
+    function handleDrop(e, cls, period) {
+      e.preventDefault();
+      const tid = e.dataTransfer.getData("text/teacher-id");
+      const subject = e.dataTransfer.getData("text/subject");
+      if (!tid || !subject) return;
+
+      const teacher = TEACHERS.find(x => x.id === tid);
+      if (!teacher) return;
+
+      if (!TIMETABLE[cls]) TIMETABLE[cls] = {};
+      if (!TIMETABLE[cls][period]) TIMETABLE[cls][period] = [];
+      const assigned = TIMETABLE[cls][period];
+
+      if (assigned.length === 0) {
+        const input = prompt("Enter day numbers (1-5, comma separated):", "1,2,3,4,5");
+        if (!input) return;
+        const chosen = input.split(",").map(x => parseInt(x.trim())).filter(n => n >= 1 && n <= 5);
+        if (chosen.length === 0) return;
+
+        chosen.forEach(day => assignTeacher(cls, period, tid, subject, day));
+
+        if ((cls === "9A" || cls === "10A") && subject === "COMP") {
+          const bioTeacher = findBioTeacherForClass(cls);
+          if (bioTeacher && confirm(`Add BIO for ${cls} with ${bioTeacher.name} on the same days?`)) {
+            chosen.forEach(day => assignTeacher(cls, period, bioTeacher.id, "BIO", day));
+          }
+        }
+      } else {
+        const input = prompt("Enter day numbers (1-5, comma separated):", "1,2,3,4,5");
+        if (!input) return;
+        const chosen = input.split(",").map(x => parseInt(x.trim())).filter(n => n >= 1 && n <= 5);
+        if (chosen.length === 0) return;
+
+        for (let i = assigned.length - 1; i >= 0; i--) {
+          const entry = assigned[i];
+          entry.days = entry.days.filter(d => !chosen.includes(d));
+          if (entry.days.length === 0) assigned.splice(i, 1);
+        }
+
+        chosen.forEach(day => assignTeacher(cls, period, tid, subject, day));
+
+        if ((cls === "9A" || cls === "10A") && subject === "COMP") {
+          const bioTeacher = findBioTeacherForClass(cls);
+          if (bioTeacher) {
+            for (let i = assigned.length - 1; i >= 0; i--) {
+              const entry = assigned[i];
+              if (entry.subject === "BIO") {
+                entry.days = entry.days.filter(d => !chosen.includes(d));
+                if (entry.days.length === 0) assigned.splice(i, 1);
+              }
+            }
+            if (confirm(`Add BIO for ${cls} with ${bioTeacher.name} on the same days?`)) {
+              chosen.forEach(day => assignTeacher(cls, period, bioTeacher.id, "BIO", day));
+            }
+          }
+        }
+      }
+
+      renderCell(cls, period);
+      recompute();
+      saveToLocalStorage();
+    }
+
+    function assignTeacher(cls, period, tid, subject, day) {
+      if (!TIMETABLE[cls]) TIMETABLE[cls] = {};
+      if (!TIMETABLE[cls][period]) TIMETABLE[cls][period] = [];
+      let existing = TIMETABLE[cls][period].find(e => e.teacher === tid && e.subject === subject);
+      if (existing) {
+        if (!existing.days.includes(day)) existing.days.push(day);
+      } else {
+        TIMETABLE[cls][period].push({ teacher: tid, subject, days: [day] });
+      }
+    }
+
+    function renderCell(cls, period) {
+      const td = document.querySelector(`td[data-class="${cls}"][data-period="${period}"]`);
+      if (!td) return;
+      td.innerHTML = "";
+      const assigned = TIMETABLE[cls]?.[period] || [];
+
+      if (assigned.length > 0) {
+        assigned.forEach((entry, idx) => {
+          const t = TEACHERS.find(x => x.id === entry.teacher);
+          const div = document.createElement("div");
+          div.className = "cell-block";
+          div.style.background = t?.color || "#607d8b";
+          div.style.color = "white";
+          div.innerHTML = `
+        <strong>${escapeHtml(entry.subject)}</strong> (${formatDays(entry.days)})<br/>
+        <small>${escapeHtml(t?.name || entry.teacher)}</small>
+      `;
+
+          const rem = document.createElement("div");
+          rem.className = "remove-btn";
+          rem.textContent = "×";
+          rem.onclick = (e) => {
+            e.stopPropagation();
+            assigned.splice(idx, 1);
+            renderCell(cls, period);
+            recompute();
+            saveToLocalStorage();
+          };
+          div.appendChild(rem);
+          td.appendChild(div);
+        });
+      }
+    }
+
+    function recompute() {
+      TEACHERS.forEach(t => {
+        t.schedule = {};
+        t.workload = 0;
+      });
+
+      for (const cls of CLASSES) {
+        if (!TIMETABLE[cls]) continue;
+        for (const pKey of Object.keys(TIMETABLE[cls])) {
+          TIMETABLE[cls][pKey].forEach(entry => {
+            const t = TEACHERS.find(x => x.id === entry.teacher);
+            if (!t) return;
+            if (!t.schedule[+pKey]) t.schedule[+pKey] = [];
+            t.schedule[+pKey].push({
+              class: cls,
+              subject: entry.subject,
+              days: [...entry.days],
+            });
+            t.workload += (entry.days || []).length;
+          });
+        }
+      }
+
+      for (const cls of CLASSES) {
+        for (const p of PERIODS) renderCell(cls, p);
+      }
+
+      checkConflicts();
+      buildTeacherTable();
+      refreshValidationLists();
+      buildIndividualClassTables();
+      buildLessonPool();
+    }
+
+    function refreshValidationLists() {
+      refreshMustList();
+      refreshMissingLessonsList();
+      refreshSubjectOccurrenceList();
+    }
+
+    function refreshMissingLessonsList() {
+      const list = document.getElementById("missingList");
+      list.innerHTML = "";
+      let hasMissing = false;
+
+      CLASSES.forEach(cls => {
+        const missingByPeriod = {};
+        PERIODS.forEach(p => {
+          const assigned = TIMETABLE[cls]?.[p] || [];
+          const coveredDays = new Set();
+          assigned.forEach(entry => (entry.days || []).forEach(d => coveredDays.add(d)));
+          const missingDays = [];
+          for (let d = 1; d <= 5; d++) if (!coveredDays.has(d)) missingDays.push(d);
+
+          if (missingDays.length > 0) {
+            hasMissing = true;
+            missingByPeriod[p] = { days: missingDays };
+          }
+        });
+
+        if (Object.keys(missingByPeriod).length > 0) {
+          const parts = Object.entries(missingByPeriod).map(([p, info]) => `<b>L${p}</b> (${info.days.join(",")})`);
+          const div = document.createElement("div");
+          div.className = "validation-item warning";
+          div.innerHTML = `<strong>${cls}</strong>: ${parts.join("; ")}`;
+          list.appendChild(div);
+        }
+      });
+
+      if (!hasMissing) {
+        const div = document.createElement("div");
+        div.className = "validation-item success";
+        div.textContent = "✓ All lessons scheduled";
+        list.appendChild(div);
+      }
+    }
+
+    function refreshMustList() {
+      const list = document.getElementById("mustList");
+      list.innerHTML = "";
+      let hasMissing = false;
+
+      CLASSES.forEach(cls => {
+        const must = MUST_SUBJECTS_DEF[cls] || [];
+        const missing = must.filter(s => {
+          if (!TIMETABLE[cls]) return true;
+          for (const pKey of Object.keys(TIMETABLE[cls])) {
+            for (const entry of TIMETABLE[cls][pKey]) {
+              if (entry.subject === s) return false;
+            }
+          }
+          return true;
+        });
+
+        if (missing.length > 0) {
+          hasMissing = true;
+          const div = document.createElement("div");
+          div.className = "validation-item danger";
+          div.innerHTML = `<strong>${cls}</strong>: ${missing.join(", ")}`;
+          list.appendChild(div);
+        }
+      });
+
+      if (!hasMissing) {
+        const div = document.createElement("div");
+        div.className = "validation-item success";
+        div.textContent = "✓ All required subjects covered";
+        list.appendChild(div);
+      }
+    }
+
+    function refreshSubjectOccurrenceList() {
+      const list = document.getElementById("subjectOccurrenceList");
+      list.innerHTML = "";
+
+      CLASSES.forEach(cls => {
+        if (!TIMETABLE[cls]) return;
+        const subjectCounts = {};
+        for (const period of Object.keys(TIMETABLE[cls])) {
+          TIMETABLE[cls][period].forEach(entry => {
+            if (entry.days && entry.days.length > 0) {
+              if (!subjectCounts[entry.subject]) subjectCounts[entry.subject] = 0;
+              subjectCounts[entry.subject] += entry.days.length;
+            }
+          });
+        }
+
+        if (Object.keys(subjectCounts).length > 0) {
+          const div = document.createElement("div");
+          div.className = "validation-item success";
+          const subjectText = Object.entries(subjectCounts).map(([s, c]) => `${s} (${c})`).join(", ");
+          div.innerHTML = `<strong>${cls}</strong>: ${subjectText}`;
+          list.appendChild(div);
+        }
+      });
+
+      if (!list.innerHTML) {
+        const div = document.createElement("div");
+        div.className = "validation-item danger";
+        div.textContent = "No subjects scheduled yet";
+        list.appendChild(div);
+      }
+    }
+
+    function checkConflicts() {
+      document.querySelectorAll("#tbody td, #teacherBody td").forEach(el => el.classList.remove("conflict"));
+
+      const scheduleMap = {};
+      for (const cls of CLASSES) {
+        if (!TIMETABLE[cls]) continue;
+        for (const pKey of Object.keys(TIMETABLE[cls])) {
+          TIMETABLE[cls][pKey].forEach(entry => {
+            if (!entry || !entry.teacher || !entry.days) return;
+            entry.days.forEach(d => {
+              const key = `${entry.teacher}_${pKey}_${d}`;
+              if (!scheduleMap[key]) scheduleMap[key] = [];
+              scheduleMap[key].push({ cls, period: pKey });
+            });
+          });
+        }
+      }
+
+      Object.keys(scheduleMap).forEach(key => {
+        const arr = scheduleMap[key];
+        if (arr.length > 1) {
+          arr.forEach(item => {
+            const td = document.querySelector(`td[data-class="${item.cls}"][data-period="${item.period}"]`);
+            if (td) td.classList.add("conflict");
+          });
+        }
+      });
+    }
+
+    function addSignatureRows(tableId) {
+      const table = document.getElementById(tableId);
+      const existing = table.querySelectorAll(".signature-row");
+      if (existing.length > 0) return;
+
+      const sigRow1 = document.createElement("tr");
+      sigRow1.className = "signature-row";
+      const sigCell1 = document.createElement("td");
+      sigCell1.colSpan = 5;
+      sigCell1.innerHTML = "<br><br><center><b>Timetable Incharge,</b><br/>AZHAR ABBAS</center>";
+      const sigCell2 = document.createElement("td");
+      sigCell2.colSpan = 4;
+      sigCell2.innerHTML = "<br><br><center><b>Principal,</b><br/>MUHAMMAD SAEED SAJID</center>";
+      sigRow1.appendChild(sigCell1);
+      sigRow1.appendChild(sigCell2);
+      table.appendChild(sigRow1);
+
+      const sigRow2 = document.createElement("tr");
+      sigRow2.className = "signature-row";
+      const sigCell3 = document.createElement("td");
+      sigCell3.colSpan = 9;
+      sigCell3.style.textAlign = "center";
+      sigCell3.style.fontSize = "0.7em";
+      sigCell3.style.fontStyle = "italic";
+      sigCell3.textContent = "© 2026-27 by SA_Rajpoot";
+      sigRow2.appendChild(sigCell3);
+      table.appendChild(sigRow2);
+    }
+
+    function exportNumberedSubjects() {
+      const exportData = {};
+      CLASSES.forEach(c => resetOccurrenceCounters(c));
+
+      CLASSES.forEach(cls => {
+        if (!TIMETABLE[cls]) return;
+        const classNumber = parseInt(cls);
+        let romanNumeral;
+        switch (classNumber) {
+          case 1: romanNumeral = "I"; break;
+          case 2: romanNumeral = "II"; break;
+          case 3: romanNumeral = "III"; break;
+          case 4: romanNumeral = "IV"; break;
+          case 5: romanNumeral = "V"; break;
+          case 6: romanNumeral = "VI"; break;
+          case 7: romanNumeral = "VII"; break;
+          case 8: romanNumeral = "VIII"; break;
+          case 9: romanNumeral = "IX"; break;
+          case 10: romanNumeral = "X"; break;
+          case 11: romanNumeral = "XI"; break;
+          case 12: romanNumeral = "XII"; break;
+          default: romanNumeral = cls;
+        }
+
+        const exportClassName = classNumber ? `${romanNumeral}-${cls.slice(-1)}` : cls;
+        exportData[exportClassName] = {};
+
+        PERIODS.forEach(period => {
+          const periodKey = `p${period}`;
+          exportData[exportClassName][periodKey] = ["-", "-", "-", "-", "-"];
+          if (TIMETABLE[cls][period]) {
+            TIMETABLE[cls][period].forEach(entry => {
+              if (entry.days) {
+                entry.days.forEach(day => {
+                  const numbered = getOccurrenceNumberedSubject(cls, entry.subject);
+                  exportData[exportClassName][periodKey][day - 1] = numbered;
+                });
+              }
+            });
+          }
+        });
+      });
+
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+      const now = new Date();
+      const timestamp = now.toISOString().slice(2, 11).replace(/[-T:]/g, "");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `weekly_lp_${timestamp}.json`;
+      a.click();
+    }
+
+    function saveJSON() {
+      const data = {
+        teachers: TEACHERS,
+        timetable: TIMETABLE,
+        subjectOccurrence: SUBJECT_OCCURRENCE_COUNTERS,
+        lastSaved: new Date().toISOString(),
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const now = new Date();
+      const timestamp = now.toISOString().slice(2, 11).replace(/[-T:]/g, "");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `timetable_backup_${timestamp}.json`;
+      a.click();
+
+      saveToLocalStorage();
+      alert("Timetable downloaded successfully!");
+    }
+
+    // ===== Initialize =====
+    document.addEventListener("DOMContentLoaded", function () {
+      initTheme();
+      document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+
+      if (loadFromLocalStorage()) console.log("Loaded from localStorage");
+
+      buildClassTable();
+      recompute();
+
+      document.getElementById("saveBtn").addEventListener("click", saveJSON);
+
+      document.getElementById("uploadBtn").addEventListener("click", function () {
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = ".json";
+        fileInput.style.display = "none";
+
+        fileInput.addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            try {
+              const data = JSON.parse(e.target.result);
+              if (data.timetable) TIMETABLE = data.timetable;
+              if (data.subjectOccurrence) SUBJECT_OCCURRENCE_COUNTERS = data.subjectOccurrence;
+              if (data.teachers) {
+                TEACHERS = data.teachers.map((t, i) => ({
+                  ...t,
+                  color: t.color || getTeacherColor(i),
+                  schedule: t.schedule || {},
+                  workload: t.workload || 0,
+                }));
+              }
+
+              buildLessonPool();
+              buildClassTable();
+              recompute();
+              saveToLocalStorage();
+              alert("Timetable uploaded successfully!");
+            } catch (err) {
+              alert("Error loading file: " + err.message);
+            }
+          };
+          reader.readAsText(file);
+        });
+
+        document.body.appendChild(fileInput);
+        fileInput.click();
+        document.body.removeChild(fileInput);
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", resetLocalStorage);
+    });
+  </script>
+
+</body>
+
+</html>

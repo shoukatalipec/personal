@@ -1,0 +1,5779 @@
+{
+  "teachers": [
+    {
+      "id": "T1",
+      "name": "Akif Inam",
+      "subjects": [
+        "GSC",
+        "PHY"
+      ],
+      "color": "#4CAF50",
+      "workload": 28,
+      "schedule": {
+        "1": [
+          {
+            "class": "6B",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "9A",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "10B",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "7B",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "10B",
+            "subject": "PHY",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "9B",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "6B",
+            "subject": "GSC",
+            "days": [
+              2
+            ]
+          },
+          {
+            "class": "7B",
+            "subject": "GSC",
+            "days": [
+              3
+            ]
+          },
+          {
+            "class": "10B",
+            "subject": "PHY",
+            "days": [
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2",
+      "name": "Akhtar Ejaz",
+      "subjects": [
+        "ISL"
+      ],
+      "color": "#2196F3",
+      "workload": 29,
+      "schedule": {
+        "2": [
+          {
+            "class": "1A",
+            "subject": "ISL",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "3B",
+            "subject": "ISL",
+            "days": [
+              1
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "3B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "3A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "2A",
+            "subject": "ISL",
+            "days": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "2A",
+            "subject": "ISL",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "4A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "1A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "2A",
+            "subject": "ISL",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "3A",
+            "subject": "ISL",
+            "days": [
+              2
+            ]
+          },
+          {
+            "class": "4A",
+            "subject": "ISL",
+            "days": [
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3",
+      "name": "Ali Hasnain",
+      "subjects": [
+        "MATH",
+        "URDU",
+        "HIST",
+        "ENG"
+      ],
+      "color": "#FF9800",
+      "workload": 27,
+      "schedule": {
+        "1": [
+          {
+            "class": "4B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "7B",
+            "subject": "MATH",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "6B",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "7A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "4B",
+            "subject": "MATH",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "6B",
+            "subject": "HIST",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "7B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "HIFZ",
+            "subject": "URDU",
+            "days": [
+              1,
+              2
+            ]
+          },
+          {
+            "class": "HIFZ",
+            "subject": "ENG",
+            "days": [
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T4",
+      "name": "Anis ur Rehman",
+      "subjects": [
+        "CHEM"
+      ],
+      "color": "#9C27B0",
+      "workload": 22,
+      "schedule": {
+        "1": [
+          {
+            "class": "10A",
+            "subject": "CHEM",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "9A",
+            "subject": "CHEM",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "10B",
+            "subject": "CHEM",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "10B",
+            "subject": "CHEM",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "9B",
+            "subject": "CHEM",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "10A",
+            "subject": "CHEM",
+            "days": [
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T5",
+      "name": "Azhar Abbas",
+      "subjects": [
+        "PST"
+      ],
+      "color": "#F44336",
+      "workload": 15,
+      "schedule": {
+        "3": [
+          {
+            "class": "12A",
+            "subject": "PST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "10A",
+            "subject": "PST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "10B",
+            "subject": "PST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T6",
+      "name": "Babar Sultan",
+      "subjects": [
+        "ISL",
+        "TQM",
+        "ENG"
+      ],
+      "color": "#00BCD4",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "8A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "9B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "9A",
+            "subject": "TQM",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "class": "9A",
+            "subject": "ISL",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "7A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "10A",
+            "subject": "TQM",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "9A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T7",
+      "name": "Chand Khushi",
+      "subjects": [
+        "ENG",
+        "SST"
+      ],
+      "color": "#8BC34A",
+      "workload": 30,
+      "schedule": {
+        "2": [
+          {
+            "class": "4B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "3A",
+            "subject": "ENG",
+            "days": [
+              1,
+              3,
+              5
+            ]
+          },
+          {
+            "class": "4A",
+            "subject": "SST",
+            "days": [
+              2,
+              4
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "4A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "3A",
+            "subject": "ENG",
+            "days": [
+              1
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "6A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "4A",
+            "subject": "ENG",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "4A",
+            "subject": "SST",
+            "days": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "3A",
+            "subject": "ENG",
+            "days": [
+              1,
+              3,
+              4
+            ]
+          },
+          {
+            "class": "4B",
+            "subject": "ENG",
+            "days": [
+              2
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T8",
+      "name": "Ehsan Ul Haq",
+      "subjects": [
+        "URDU"
+      ],
+      "color": "#FF5722",
+      "workload": 28,
+      "schedule": {
+        "2": [
+          {
+            "class": "3A",
+            "subject": "URDU",
+            "days": [
+              3,
+              4
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "2A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "1A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "3B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "2A",
+            "subject": "URDU",
+            "days": [
+              2,
+              3
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "3A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "1A",
+            "subject": "URDU",
+            "days": [
+              2,
+              4
+            ]
+          },
+          {
+            "class": "3B",
+            "subject": "URDU",
+            "days": [
+              1,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T9",
+      "name": "Habib ur Rehman",
+      "subjects": [
+        "BIO",
+        "GSC",
+        "URDU"
+      ],
+      "color": "#673AB7",
+      "workload": 28,
+      "schedule": {
+        "1": [
+          {
+            "class": "5B",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "10A",
+            "subject": "BIO",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "10A",
+            "subject": "BIO",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "9A",
+            "subject": "BIO",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "6B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "6B",
+            "subject": "URDU",
+            "days": [
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "6A",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "5B",
+            "subject": "GSC",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "6A",
+            "subject": "GSC",
+            "days": [
+              1,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T10",
+      "name": "Ibtsam Ashraf",
+      "subjects": [
+        "GSC",
+        "ISL",
+        "MATH"
+      ],
+      "color": "#3F51B5",
+      "workload": 30,
+      "schedule": {
+        "1": [
+          {
+            "class": "3A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "8A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "8B",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "8A",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "3A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2
+            ]
+          },
+          {
+            "class": "8B",
+            "subject": "GSC",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "7A",
+            "subject": "GSC",
+            "days": [
+              4,
+              5
+            ]
+          },
+          {
+            "class": "8A",
+            "subject": "GSC",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "7A",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T11",
+      "name": "Ilahi Bukhsh",
+      "subjects": [
+        "ENG",
+        "HIST"
+      ],
+      "color": "#009688",
+      "workload": 28,
+      "schedule": {
+        "1": [
+          {
+            "class": "3B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "7A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "6B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "7A",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "7B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "7A",
+            "subject": "HIST",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "3B",
+            "subject": "ENG",
+            "days": [
+              2,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T12",
+      "name": "Iqbal Hussain",
+      "subjects": [
+        "MATH",
+        "ISL",
+        "COMP"
+      ],
+      "color": "#FFC107",
+      "workload": 29,
+      "schedule": {
+        "1": [
+          {
+            "class": "7A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "6B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "4B",
+            "subject": "COMP",
+            "days": [
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "6A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "4A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "class": "6B",
+            "subject": "ISL",
+            "days": [
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "6B",
+            "subject": "ISL",
+            "days": [
+              1
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "6A",
+            "subject": "MATH",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "7A",
+            "subject": "MATH",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "6B",
+            "subject": "ISL",
+            "days": [
+              4,
+              3
+            ]
+          },
+          {
+            "class": "6B",
+            "subject": "MATH",
+            "days": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T13",
+      "name": "M. Aamir",
+      "subjects": [
+        "COMP"
+      ],
+      "color": "#795548",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "12A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "10A",
+            "subject": "COMP",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "10A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "9A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "11A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "11A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "12A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T14",
+      "name": "M. Jameel",
+      "subjects": [
+        "ECA"
+      ],
+      "color": "#607D8B",
+      "workload": 20,
+      "schedule": {
+        "2": [
+          {
+            "class": "2A",
+            "subject": "ECA",
+            "days": [
+              1,
+              3
+            ]
+          },
+          {
+            "class": "3B",
+            "subject": "ECA",
+            "days": [
+              2,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "3A",
+            "subject": "ECA",
+            "days": [
+              2,
+              4
+            ]
+          },
+          {
+            "class": "4B",
+            "subject": "ECA",
+            "days": [
+              1
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "1A",
+            "subject": "ECA",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "4A",
+            "subject": "ECA",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "ECA",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "1A",
+            "subject": "ECA",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "6B",
+            "subject": "ECA",
+            "days": [
+              3
+            ]
+          },
+          {
+            "class": "12A",
+            "subject": "ECA",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "7A",
+            "subject": "ECA",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "8A",
+            "subject": "ECA",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "8B",
+            "subject": "ECA",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "5A",
+            "subject": "ECA",
+            "days": [
+              3
+            ]
+          },
+          {
+            "class": "6A",
+            "subject": "ECA",
+            "days": [
+              2
+            ]
+          },
+          {
+            "class": "7B",
+            "subject": "ECA",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "11A",
+            "subject": "ECA",
+            "days": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T15",
+      "name": "M. Talha",
+      "subjects": [
+        "ENG",
+        "SST",
+        "MATH"
+      ],
+      "color": "#E91E63",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "1A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "1A",
+            "subject": "ENG",
+            "days": [
+              2,
+              4
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "5B",
+            "subject": "SST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "5A",
+            "subject": "SST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "1A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "SST",
+            "days": [
+              4
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "1A",
+            "subject": "ENG",
+            "days": [
+              4
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "1A",
+            "subject": "MATH",
+            "days": [
+              1,
+              3
+            ]
+          },
+          {
+            "class": "5A",
+            "subject": "SST",
+            "days": [
+              2
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T16",
+      "name": "Naveed Arif",
+      "subjects": [
+        "URDU",
+        "ISL"
+      ],
+      "color": "#CDDC39",
+      "workload": 27,
+      "schedule": {
+        "2": [
+          {
+            "class": "4A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "7B",
+            "subject": "URDU",
+            "days": [
+              2,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "4B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "4A",
+            "subject": "URDU",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "ISL",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "5A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "5B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "4B",
+            "subject": "URDU",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "7B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T17",
+      "name": "Binyamin Ilyas",
+      "subjects": [
+        "GK"
+      ],
+      "color": "#FFEB3B",
+      "workload": 28,
+      "schedule": {
+        "2": [
+          {
+            "class": "3A",
+            "subject": "GK",
+            "days": [
+              2,
+              5,
+              1
+            ]
+          },
+          {
+            "class": "3B",
+            "subject": "GK",
+            "days": [
+              3,
+              4
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "1A",
+            "subject": "GK",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "2A",
+            "subject": "GK",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "3A",
+            "subject": "GK",
+            "days": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "1A",
+            "subject": "GK",
+            "days": [
+              2,
+              3
+            ]
+          },
+          {
+            "class": "2A",
+            "subject": "GK",
+            "days": [
+              1,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "3B",
+            "subject": "GK",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T18",
+      "name": "Rizwan Nasir",
+      "subjects": [
+        "ENG",
+        "MATH",
+        "COMP"
+      ],
+      "color": "#9E9E9E",
+      "workload": 29,
+      "schedule": {
+        "1": [
+          {
+            "class": "2A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "5B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "5A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "2A",
+            "subject": "ENG",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "ENG",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "3B",
+            "subject": "COMP",
+            "days": [
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "2A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "2A",
+            "subject": "ENG",
+            "days": [
+              2
+            ]
+          },
+          {
+            "class": "2A",
+            "subject": "MATH",
+            "days": [
+              3,
+              4
+            ]
+          },
+          {
+            "class": "5A",
+            "subject": "ENG",
+            "days": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T19",
+      "name": "Saeed Raza",
+      "subjects": [
+        "URDU"
+      ],
+      "color": "#03A9F4",
+      "workload": 27,
+      "schedule": {
+        "3": [
+          {
+            "class": "6A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "8B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "5A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "5B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "5A",
+            "subject": "URDU",
+            "days": [
+              3
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "URDU",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "8A",
+            "subject": "URDU",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "8A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T20",
+      "name": "Sajid Tabbassum",
+      "subjects": [
+        "MATH",
+        "ISL",
+        "COMP",
+        "SST",
+        "HIST"
+      ],
+      "color": "#FF4081",
+      "workload": 27,
+      "schedule": {
+        "2": [
+          {
+            "class": "6A",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "3B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "4B",
+            "subject": "SST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "3A",
+            "subject": "COMP",
+            "days": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "class": "3B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "4B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "4B",
+            "subject": "SST",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "6A",
+            "subject": "HIST",
+            "days": [
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T21",
+      "name": "Sammar Hussain",
+      "subjects": [
+        "COMP",
+        "MATH",
+        "GSC"
+      ],
+      "color": "#7C4DFF",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "7B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "1A",
+            "subject": "COMP",
+            "days": [
+              1,
+              3
+            ]
+          },
+          {
+            "class": "2A",
+            "subject": "COMP",
+            "days": [
+              2,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "7A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "6A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "1A",
+            "subject": "COMP",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "HIFZ",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "class": "HIFZ",
+            "subject": "GSC",
+            "days": [
+              4,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T22",
+      "name": "Saqib Sheraz",
+      "subjects": [
+        "GSC",
+        "PHY"
+      ],
+      "color": "#18FFFF",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "5A",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "11A",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "12A",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "10A",
+            "subject": "PHY",
+            "days": [
+              3
+            ]
+          },
+          {
+            "class": "11A",
+            "subject": "PHY",
+            "days": [
+              4,
+              5
+            ]
+          },
+          {
+            "class": "12A",
+            "subject": "PHY",
+            "days": [
+              1,
+              2
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "5A",
+            "subject": "GSC",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "10A",
+            "subject": "PHY",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "10A",
+            "subject": "PHY",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T23",
+      "name": "Shahid Zulfiqar",
+      "subjects": [
+        "URDU"
+      ],
+      "color": "#FF6E40",
+      "workload": 28,
+      "schedule": {
+        "1": [
+          {
+            "class": "9A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "10A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "9B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "12A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "10B",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "11A",
+            "subject": "URDU",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T24",
+      "name": "Nawaz Rasool",
+      "subjects": [
+        "ENG",
+        "HIST"
+      ],
+      "color": "#64FFDA",
+      "workload": 28,
+      "schedule": {
+        "1": [
+          {
+            "class": "8B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "7B",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "7B",
+            "subject": "HIST",
+            "days": [
+              1,
+              3
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "8A",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "9A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "8A",
+            "subject": "HIST",
+            "days": [
+              2
+            ]
+          },
+          {
+            "class": "8B",
+            "subject": "HIST",
+            "days": [
+              1,
+              4
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "8B",
+            "subject": "HIST",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T25",
+      "name": "Shamim Ijaz",
+      "subjects": [
+        "ENG"
+      ],
+      "color": "#FFAB40",
+      "workload": 25,
+      "schedule": {
+        "1": [
+          {
+            "class": "9B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "10B",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "11A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "10A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              4,
+              5
+            ]
+          },
+          {
+            "class": "11A",
+            "subject": "ENG",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "12A",
+            "subject": "ENG",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "12A",
+            "subject": "ENG",
+            "days": [
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T26",
+      "name": "Shoukat Ali",
+      "subjects": [
+        "COMP",
+        "MATH"
+      ],
+      "color": "#304FFE",
+      "workload": 27,
+      "schedule": {
+        "1": [
+          {
+            "class": "10B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "10B",
+            "subject": "COMP",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "10B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "9B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "9B",
+            "subject": "MATH",
+            "days": [
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "6B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "9B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T27",
+      "name": "Waseem Haider",
+      "subjects": [
+        "ISL",
+        "TQM"
+      ],
+      "color": "#B388FF",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "6A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "11A",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "7B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "9B",
+            "subject": "TQM",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "8B",
+            "subject": "ISL",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "8B",
+            "subject": "ISL",
+            "days": [
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "10B",
+            "subject": "TQM",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T28",
+      "name": "Usman Afzal",
+      "subjects": [
+        "MATH",
+        "COMP"
+      ],
+      "color": "#69F0AE",
+      "workload": 28,
+      "schedule": {
+        "2": [
+          {
+            "class": "8B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "8A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "8B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "8A",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "5A",
+            "subject": "COMP",
+            "days": [
+              4,
+              5
+            ]
+          },
+          {
+            "class": "8A",
+            "subject": "MATH",
+            "days": [
+              1
+            ]
+          },
+          {
+            "class": "8B",
+            "subject": "MATH",
+            "days": [
+              3
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "5A",
+            "subject": "COMP",
+            "days": [
+              4
+            ]
+          },
+          {
+            "class": "5B",
+            "subject": "COMP",
+            "days": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T29",
+      "name": "Zahid Ikram",
+      "subjects": [
+        "GSC",
+        "MATH"
+      ],
+      "color": "#FF5252",
+      "workload": 30,
+      "schedule": {
+        "1": [
+          {
+            "class": "4A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "5A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "3": [
+          {
+            "class": "4A",
+            "subject": "GSC",
+            "days": [
+              1,
+              3,
+              5
+            ]
+          },
+          {
+            "class": "4B",
+            "subject": "GSC",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "5B",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "5B",
+            "subject": "MATH",
+            "days": [
+              1
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "4A",
+            "subject": "MATH",
+            "days": [
+              5
+            ]
+          },
+          {
+            "class": "4B",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "5A",
+            "subject": "MATH",
+            "days": [
+              2
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "4A",
+            "subject": "GSC",
+            "days": [
+              1,
+              2,
+              4
+            ]
+          },
+          {
+            "class": "4B",
+            "subject": "GSC",
+            "days": [
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "T30",
+      "name": "Zahid Nadeem",
+      "subjects": [
+        "MATH"
+      ],
+      "color": "#448AFF",
+      "workload": 26,
+      "schedule": {
+        "1": [
+          {
+            "class": "11A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "2": [
+          {
+            "class": "12A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "4": [
+          {
+            "class": "10A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "5": [
+          {
+            "class": "9A",
+            "subject": "MATH",
+            "days": [
+              4
+            ]
+          }
+        ],
+        "6": [
+          {
+            "class": "12A",
+            "subject": "MATH",
+            "days": [
+              3,
+              4
+            ]
+          }
+        ],
+        "7": [
+          {
+            "class": "9A",
+            "subject": "MATH",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "8": [
+          {
+            "class": "11A",
+            "subject": "MATH",
+            "days": [
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "timetable": {
+    "1A": {
+      "1": [
+        {
+          "teacher": "T15",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            1,
+            3
+          ]
+        },
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T15",
+          "subject": "ENG",
+          "days": [
+            2,
+            4
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T15",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            4
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T15",
+          "subject": "ENG",
+          "days": [
+            4
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            2,
+            4
+          ]
+        },
+        {
+          "teacher": "T15",
+          "subject": "MATH",
+          "days": [
+            1,
+            3
+          ]
+        }
+      ]
+    },
+    "2A": {
+      "1": [
+        {
+          "teacher": "T18",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            1,
+            3
+          ]
+        },
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            2,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            1
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            1,
+            4
+          ]
+        },
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T18",
+          "subject": "MATH",
+          "days": [
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1
+          ]
+        }
+      ]
+    },
+    "3B": {
+      "1": [
+        {
+          "teacher": "T11",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            2,
+            5
+          ]
+        },
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T20",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T20",
+          "subject": "MATH",
+          "days": [
+            1,
+            2
+          ]
+        },
+        {
+          "teacher": "T18",
+          "subject": "COMP",
+          "days": [
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            1,
+            3
+          ]
+        },
+        {
+          "teacher": "T11",
+          "subject": "ENG",
+          "days": [
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    "3A": {
+      "1": [
+        {
+          "teacher": "T10",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            3,
+            4
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            2,
+            4
+          ]
+        },
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1,
+            3,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T17",
+          "subject": "GK",
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T20",
+          "subject": "COMP",
+          "days": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T10",
+          "subject": "MATH",
+          "days": [
+            1,
+            2
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T8",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "4A": {
+      "1": [
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T7",
+          "subject": "SST",
+          "days": [
+            2,
+            4
+          ]
+        },
+        {
+          "teacher": "T29",
+          "subject": "GSC",
+          "days": [
+            1,
+            3,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T7",
+          "subject": "SST",
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T2",
+          "subject": "ISL",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T29",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    "4B": {
+      "1": [
+        {
+          "teacher": "T3",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T29",
+          "subject": "GSC",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "COMP",
+          "days": [
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T20",
+          "subject": "SST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T3",
+          "subject": "MATH",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T29",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T20",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T29",
+          "subject": "GSC",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T20",
+          "subject": "SST",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            2
+          ]
+        }
+      ]
+    },
+    "5A": {
+      "1": [
+        {
+          "teacher": "T22",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T15",
+          "subject": "SST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T16",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T22",
+          "subject": "GSC",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T28",
+          "subject": "COMP",
+          "days": [
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            2
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T28",
+          "subject": "COMP",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T15",
+          "subject": "SST",
+          "days": [
+            2
+          ]
+        }
+      ]
+    },
+    "5B": {
+      "1": [
+        {
+          "teacher": "T9",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T15",
+          "subject": "SST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T29",
+          "subject": "MATH",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T16",
+          "subject": "ISL",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T15",
+          "subject": "SST",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T18",
+          "subject": "ENG",
+          "days": [
+            3
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T16",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            4
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T28",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "GSC",
+          "days": [
+            4
+          ]
+        }
+      ]
+    },
+    "6A": {
+      "1": [
+        {
+          "teacher": "T27",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T20",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T7",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T9",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "GSC",
+          "days": [
+            1,
+            3
+          ]
+        },
+        {
+          "teacher": "T20",
+          "subject": "HIST",
+          "days": [
+            4
+          ]
+        }
+      ]
+    },
+    "6B": {
+      "1": [
+        {
+          "teacher": "T1",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T3",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T11",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T9",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "ISL",
+          "days": [
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T3",
+          "subject": "HIST",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "ISL",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "URDU",
+          "days": [
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            3
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T26",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T12",
+          "subject": "ISL",
+          "days": [
+            4,
+            3
+          ]
+        },
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T1",
+          "subject": "GSC",
+          "days": [
+            2
+          ]
+        }
+      ]
+    },
+    "7A": {
+      "1": [
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T11",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T3",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T11",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T6",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T12",
+          "subject": "MATH",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T11",
+          "subject": "HIST",
+          "days": [
+            2
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "7B": {
+      "1": [
+        {
+          "teacher": "T21",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T3",
+          "subject": "MATH",
+          "days": [
+            3
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            1,
+            3
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T27",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T1",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T11",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T3",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T1",
+          "subject": "GSC",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T16",
+          "subject": "URDU",
+          "days": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    "8A": {
+      "1": [
+        {
+          "teacher": "T6",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T10",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T28",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T28",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T28",
+          "subject": "MATH",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            2
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "8B": {
+      "1": [
+        {
+          "teacher": "T24",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T28",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T19",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T28",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T27",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T10",
+          "subject": "GSC",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            2
+          ]
+        },
+        {
+          "teacher": "T28",
+          "subject": "MATH",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            1,
+            4
+          ]
+        },
+        {
+          "teacher": "T27",
+          "subject": "ISL",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T24",
+          "subject": "HIST",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "9A": {
+      "1": [
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T1",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "BIO",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T6",
+          "subject": "TQM",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T6",
+          "subject": "ISL",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T24",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T6",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "9B": {
+      "1": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T6",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T26",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T27",
+          "subject": "TQM",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T26",
+          "subject": "MATH",
+          "days": [
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T1",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T26",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "10A": {
+      "1": [
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "BIO",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T9",
+          "subject": "BIO",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T5",
+          "subject": "PST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            3
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T6",
+          "subject": "TQM",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            4
+          ]
+        },
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "10B": {
+      "1": [
+        {
+          "teacher": "T26",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T26",
+          "subject": "COMP",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T26",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T1",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T4",
+          "subject": "CHEM",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T1",
+          "subject": "PHY",
+          "days": [
+            5
+          ]
+        },
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T5",
+          "subject": "PST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T27",
+          "subject": "TQM",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T1",
+          "subject": "PHY",
+          "days": [
+            4
+          ]
+        }
+      ]
+    },
+    "11A": {
+      "1": [
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T27",
+          "subject": "ISL",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            4,
+            5
+          ]
+        },
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2
+          ]
+        },
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            3
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            1
+          ]
+        },
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    "12A": {
+      "1": [
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "2": [
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "3": [
+        {
+          "teacher": "T5",
+          "subject": "PST",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "4": [
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "5": [
+        {
+          "teacher": "T23",
+          "subject": "URDU",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "6": [
+        {
+          "teacher": "T30",
+          "subject": "MATH",
+          "days": [
+            3,
+            4
+          ]
+        },
+        {
+          "teacher": "T22",
+          "subject": "PHY",
+          "days": [
+            1,
+            2
+          ]
+        },
+        {
+          "teacher": "T14",
+          "subject": "ECA",
+          "days": [
+            5
+          ]
+        }
+      ],
+      "7": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T25",
+          "subject": "ENG",
+          "days": [
+            3
+          ]
+        },
+        {
+          "teacher": "T13",
+          "subject": "COMP",
+          "days": [
+            1,
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    "HIFZ": {
+      "7": [
+        {
+          "teacher": "T21",
+          "subject": "MATH",
+          "days": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teacher": "T21",
+          "subject": "GSC",
+          "days": [
+            4,
+            5
+          ]
+        }
+      ],
+      "8": [
+        {
+          "teacher": "T3",
+          "subject": "URDU",
+          "days": [
+            1,
+            2
+          ]
+        },
+        {
+          "teacher": "T3",
+          "subject": "ENG",
+          "days": [
+            3,
+            4
+          ]
+        }
+      ]
+    }
+  },
+  "subjectOccurrence": {},
+  "lastSaved": "2026-04-16T12:59:27.991Z"
+}
